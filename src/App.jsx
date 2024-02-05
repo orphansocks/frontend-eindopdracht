@@ -1,8 +1,12 @@
+
 import {Route, Routes } from 'react-router-dom';
 
-import './App.css'
+import './App.css';
 
-import Home from './pages/Home.jsx';
+import NavBar from './components/navbar/NavBar.jsx';
+import Footer from "./components/footer/Footer.jsx";
+
+import Home from "./pages/Home.jsx";
 
 import Register from './pages/Register.jsx';
 import Login from './pages/Login.jsx';
@@ -12,14 +16,10 @@ import AllRelatives from './pages/relatives/AllRelatives.jsx';
 import SearchRelative from './pages/relatives/SearchRelative.jsx';
 import SingleRelative from './pages/relatives/SingleRelative.jsx';
 
-import NotFound from './pages/notFoundPage.jsx';
-
-import NavBar from './components/navBar/NavBar.jsx';
-import Footer from "./components/footer/Footer.jsx";
+import NotFoundPage from './pages/NotFoundPage.jsx';
 
 
 function App() {
-
 
     return (
         <>
@@ -33,12 +33,12 @@ function App() {
                     <Route path="/allrelatives" element={<AllRelatives />} />
                     <Route path="/searchrelative" element={<SearchRelative />} />
                     <Route path="/relative/:id" element={<SingleRelative/>} />
-                    <Route path="*" element={<NotFound/>}/>
+                    <Route path="*" element={<NotFoundPage />}/>
                 </Routes>
             </main>
             <Footer />
         </>
-    )
+    );
 }
 
-export default App
+export default App;

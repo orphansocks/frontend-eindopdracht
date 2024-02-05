@@ -18,7 +18,7 @@
     "dob": "1076-6-10",
     "relation": "Freek",
     "children": 3,
-    "group": "Family",
+    "group": "Neighbours",
     "misc": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   {
@@ -29,7 +29,7 @@
     "dob": "1076-6-10",
     "relation": "Freek",
     "children": 3,
-    "group": "Family",
+    "group": "Colleagues",
     "misc": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   }
 ]
