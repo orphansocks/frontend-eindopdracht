@@ -1,0 +1,8 @@
+
+.footer-navigation {
+    background-color: var(--color-tertiary);
+    color: var(--color-secondary);
+    text-align: center;
+    padding: 32px 0;
+    font-weight: 600;
+}
