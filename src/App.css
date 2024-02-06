@@ -23,6 +23,7 @@
     flex-shrink: 1;
     flex-grow: 0;
     background-color: var(--color-primary);
+    align-items: center;
   }
 
   /* WAAROM DEZE TEXT-RESTRICTION CONTAINER  MET EEN BREEDTE VAN 1000PX?*/
@@ -37,7 +38,7 @@
   .inner-content-container__text-restriction {
     /*We voegen margin toe aan de linker- en rechterkant, zodat de content nooit helemaal tegen de rand gedrukt kan worden*/
     margin: 0 20px;
-    padding: 100px 0;
+    padding: 50px 0;
     /*We zorgen er ook voor dat deze flex-item op haar beurt ook weer een flexbox container is, waarin alle children onder elkaar komen te staan*/
     display: flex;
     flex-direction: column;

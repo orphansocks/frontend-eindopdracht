@@ -1,13 +1,17 @@
 .button {
-    border: none;
-    font-weight: 600;
-    padding: 12px;
-    border-radius: 50px;
+    background-color: transparent;
+    border: 1px solid var(--color-black);
+    border-radius: 20px;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    transition: border-color 0.25s;
 }
 
 .button-primary {
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
+    border-color: var(--color-black);
+    border: 1px solid var(--color-black);
+    color: var(--color-black);
     display: inline;
 }
 
@@ -15,3 +19,25 @@
     background-color: transparent;
     max-width: 200px;
 }
+
+.button + .button {
+    margin-left: 20px; /* Example style for spacing */
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+}
+
+
+button:hover {
+    border-color: var(--color-black);
+    cursor: pointer;
+}
+
+button:focus,
+button:focus-visible {
+    outline: 1px solid var(--color-black);
+}
+
+
+
