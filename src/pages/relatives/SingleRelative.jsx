@@ -1,6 +1,5 @@
 import {Link} from "react-router-dom";
 import Button from "../../components/button/Button.jsx";
-import NavBar from "../../components/navbar/NavBar.jsx";
 import Portrait from "../../components/portrait/Portrait.jsx";
 
 function SingleRelative() {
@@ -17,26 +16,24 @@ function SingleRelative() {
                 <div className="inner-content-container">
 
                     <h3>NAME Marie Machielsen NICKNAME Marietje GEBOREN 10 juni 1976 GETROUWD met
-                        Klaas Klaassen
-                        KIDS (3) Keesje Timmie & Sjakie RELATIVE Collega Utrecht MISC “geen sla geen
-                        vla”</h3>
+                        Klaas Klaassen KIDS (3) Keesje Timmie & Sjakie RELATIVE Collega Utrecht MISC “geen sla geen
+                        vla”
+                    </h3>
 
                 </div>
 
             </section>
 
             <section className="outer-content-container">
-
                 <div className="inner-content-container">
-<span>
-     <Portrait/>
-</span>
+                <span>
+                <Portrait color="blue"/>
+                </span>
                 </div>
             </section>
 
             <section className="outer-content-container">
                 <div className="inner-content-container">
-
                     <span>
                     <Button type="button" variant="primary"
                             onClick={() => navigate('/searchrelative')}>Aanpassen</Button>
