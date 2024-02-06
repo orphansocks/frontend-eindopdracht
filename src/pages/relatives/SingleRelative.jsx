@@ -5,7 +5,7 @@ function SingleRelative() {
 
         <>
 
-            <h1>Name of Relative</h1>
+            <h1 className="page-title">Name of Relative</h1>
 
 
 

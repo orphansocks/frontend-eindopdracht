@@ -23,9 +23,9 @@ import NotFoundPage from './pages/NotFoundPage';
 function App() {
 
     return (
-        <>
+        <div className="App">
             <NavBar />
-            <main>
+            <main className="content">
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/register" element={<Register />} />
@@ -39,7 +39,7 @@ function App() {
                 </Routes>
             </main>
             <Footer />
-        </>
+        </div>
     );
 }
 

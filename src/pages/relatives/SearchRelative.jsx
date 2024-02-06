@@ -5,7 +5,7 @@ function SearchRelative() {
 
         <>
 
-            <h1>Search relative</h1>
+            <h1 className="page-title">Search relative</h1>
 
 
 

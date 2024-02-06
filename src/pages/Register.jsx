@@ -7,7 +7,7 @@ function Register() {
 
         <>
 
-            <h1>Register</h1>
+            <h1 className="page-title">Register</h1>
 
 
             <form>

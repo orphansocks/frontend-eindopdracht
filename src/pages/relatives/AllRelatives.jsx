@@ -5,7 +5,7 @@ function AllRelatives() {
 
         <>
 
-            <h1>All relatives</h1>
+            <h1 className="page-title">All relatives</h1>
 
 
 

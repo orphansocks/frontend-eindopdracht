@@ -7,8 +7,8 @@ function Footer() {
 
     return (
 
-        <footer className="outer-content-container footer-navigation ">
-            Relatives &copy; Eva van Dongen - 2024 - eindopdracht NOVI Hogeschool
+        <footer className="outer-content-container sticky-footer">
+            relatives &copy; Eva van Dongen - 2024 - eindopdracht NOVI Hogeschool
         </footer>
 
     );

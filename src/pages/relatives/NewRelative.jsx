@@ -5,7 +5,7 @@ function NewRelative() {
 
         <>
 
-            <h1>Add new relative</h1>
+            <h1 className="page-title">Add new relative</h1>
 
 
 
