@@ -1,5 +1,5 @@
 .main-navigation {
-    background: linear-gradient(37deg, var(--color-secondary) 0%, var(--color-secondary) 8%, var(--color-primary) 100%);
+    background: var(--color-primary);
     padding: 16px 0;
 }
 
@@ -18,12 +18,14 @@
 
 .main-navigation a,
 .main-navigation a:visited {
-    color: white;
+    color: var(--color-black);
     font-weight: 600;
+    text-transform: lowercase;
+    font-size: 1.2em;
 }
 
 .main-navigation a:hover {
-    color: var(--color-secondary);
+    color: var(--color-highlight);
 }
 
 

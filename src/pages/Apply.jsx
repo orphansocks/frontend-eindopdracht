@@ -5,7 +5,7 @@ function Apply() {
 
         <>
 
-            <h1>Apply as designer</h1>
+            <h1 className="page-title">Apply as designer</h1>
 
 
             <form>

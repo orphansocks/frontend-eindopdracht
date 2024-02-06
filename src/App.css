@@ -1,51 +1,69 @@
 /* DE OUTER CONTAINER IS ALTIJD 100% SCHERMBREEDTE EN CENTREERT DE BINNENSTE CONTENT */
-.outer-content-container {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-/*DE BINNENSTE CONTAINER HEEFT EEN x BREEDTE ZODAT DE CONTENT NIET ZOVER WORDT UITGEREKT OP EEN
-SUPPER BREED SCHERM. DE CONTAINER MAG KRIMPEN EN NIET UITZETTEN*/
-.inner-content-container {
-  flex-basis: 1400px;
-  flex-shrink: 1;
-  flex-grow: 0;
-}
-
-/* WAAROM DEZE TEXT-RESTRICTION CONTAINER  MET EEN BREEDTE VAN 1000PX?*/
-
-.inner-content-container__text-restriction {
-  flex-basis: 1000px;
-  flex-shrink: 1;
-  flex-grow: 0;
-}
-
-.inner-content-container,
-.inner-content-container__text-restriction {
-  /*We voegen margin toe aan de linker- en rechterkant, zodat de content nooit helemaal tegen de rand gedrukt kan worden*/
-  margin: 0 20px;
-  padding: 100px 0;
-  /*We zorgen er ook voor dat deze flex-item op haar beurt ook weer een flexbox container is, waarin alle children onder elkaar komen te staan*/
+.App {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
-
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.content {
+  flex: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .outer-content-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
+
+  /*DE BINNENSTE CONTAINER HEEFT EEN x BREEDTE ZODAT DE CONTENT NIET ZOVER WORDT UITGEREKT OP EEN
+  SUPPER BREED SCHERM. DE CONTAINER MAG KRIMPEN EN NIET UITZETTEN*/
+  .inner-content-container {
+    flex-basis: 1400px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    background-color: var(--color-primary);
+    align-items: center;
+    margin: 0 20px;
+    padding: 50px 0;
+  }
+
+  /* WAAROM DEZE TEXT-RESTRICTION CONTAINER  MET EEN BREEDTE VAN 1000PX?*/
+
+  .inner-content-container__text-restriction {
+    flex-basis: 1000px;
+  }
+
+.inner-content-container__home-quote {
+  flex-basis: 1000px;
+  min-height: 60vh;
+  justify-content: center;
+
 }
+
+  .inner-content-container,
+  .inner-content-container__text-restriction {
+    /*We voegen margin toe aan de linker- en rechterkant, zodat de content nooit helemaal tegen de rand gedrukt kan worden*/
+
+    /*We zorgen er ook voor dat deze flex-item op haar beurt ook weer een flexbox container is, waarin alle children onder elkaar komen te staan*/
+    display: flex;
+    flex-direction: column;
+  }
+
+
+
+  @keyframes logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(2) .logo {
+      animation: logo-spin infinite 20s linear;
+    }
+  }
 

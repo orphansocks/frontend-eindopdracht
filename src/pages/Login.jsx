@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 function Login() {
 
 
@@ -5,14 +7,26 @@ function Login() {
 
         <>
 
-            <h1>Login</h1>
+            <h1 className="page-title">Login</h1>
 
 
-            <form>
+            <section  className="outer-content-container">
+
+                <div className="inner-content-container">
+                    <p>Hier komt de content</p>
+                    <p>+ FORM</p>
+                    <form>
 
 
 
-            </form>
+                    </form>
+
+                    <p>Not having an account yet? Please register <Link to="/register">here</Link></p>
+
+                </div>
+
+            </section>
+
 
 
 
