@@ -1,11 +1,11 @@
-function Login() {
+function Apply() {
 
 
     return (
 
         <>
 
-            <h1>Login</h1>
+            <h1>Apply as designer</h1>
 
 
             <form>
@@ -28,4 +28,4 @@ function Login() {
 
 }
 
-export default Login;
+export default Apply;

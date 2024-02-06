@@ -1,25 +1,26 @@
-import {Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
-import './App.css'
+import './App.css';
 
-import Home from './pages/Home.jsx';
+import NavBar from './components/navbar/NavBar';
+import Footer from "./components/footer/Footer";
 
-import Register from './pages/Register.jsx';
-import Login from './pages/Login.jsx';
+import Home from "./pages/Home";
 
-import NewRelative from './pages/relatives/NewRelative.jsx';
-import AllRelatives from './pages/relatives/AllRelatives.jsx';
-import SearchRelative from './pages/relatives/SearchRelative.jsx';
-import SingleRelative from './pages/relatives/SingleRelative.jsx';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Apply from './pages/Apply';
 
-import NotFound from './pages/notFoundPage.jsx';
+import NewRelative from './pages/relatives/NewRelative';
+import AllRelatives from './pages/relatives/AllRelatives';
+import SearchRelative from './pages/relatives/SearchRelative';
+import SingleRelative from './pages/relatives/SingleRelative';
 
-import NavBar from './components/navBar/NavBar.jsx';
-import Footer from "./components/footer/Footer.jsx";
+import NotFoundPage from './pages/NotFoundPage';
+
 
 
 function App() {
-
 
     return (
         <>
@@ -28,17 +29,18 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/apply" element={<Apply />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/newrelative" element={<NewRelative />} />
                     <Route path="/allrelatives" element={<AllRelatives />} />
                     <Route path="/searchrelative" element={<SearchRelative />} />
                     <Route path="/relative/:id" element={<SingleRelative/>} />
-                    <Route path="*" element={<NotFound/>}/>
+                    <Route path="*" element={<NotFoundPage />}/>
                 </Routes>
             </main>
             <Footer />
         </>
-    )
+    );
 }
 
-export default App
+export default App;
