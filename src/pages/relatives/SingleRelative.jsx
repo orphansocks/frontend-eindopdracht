@@ -19,17 +19,11 @@ function SingleRelative() {
                         Klaas Klaassen KIDS (3) Keesje Timmie & Sjakie RELATIVE Collega Utrecht MISC “geen sla geen
                         vla”
                     </h3>
+                    <p>Het type relatie gaat de kleur van de cirkel bepalen</p>
+                    <Portrait color="blue"/>
 
                 </div>
 
-            </section>
-
-            <section className="outer-content-container">
-                <div className="inner-content-container">
-                <span>
-                <Portrait color="blue"/>
-                </span>
-                </div>
             </section>
 
             <section className="outer-content-container">

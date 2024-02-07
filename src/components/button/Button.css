@@ -1,3 +1,20 @@
+
+button, input, select, textarea {
+    font-family: inherit;
+}
+
+
+button:hover {
+    border-color: var(--color-black);
+    cursor: pointer;
+}
+
+button:focus,
+button:focus-visible {
+    outline: 1px solid var(--color-black);
+}
+
+
 .button {
     background-color: transparent;
     border: 1px solid var(--color-black);
@@ -22,21 +39,6 @@
 
 .button + .button {
     margin-left: 20px; /* Example style for spacing */
-}
-
-button, input, select, textarea {
-    font-family: inherit;
-}
-
-
-button:hover {
-    border-color: var(--color-black);
-    cursor: pointer;
-}
-
-button:focus,
-button:focus-visible {
-    outline: 1px solid var(--color-black);
 }
 
 

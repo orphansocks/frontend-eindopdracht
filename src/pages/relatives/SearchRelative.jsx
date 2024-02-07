@@ -1,9 +1,11 @@
 import Button from "../../components/button/Button.jsx";
 import {useNavigate} from "react-router-dom";
+import SearchField from "../../components/forms/SearchField.jsx";
 
 function SearchRelative() {
 
     const navigate = useNavigate();
+    const data = "Marie"
 
 
     return (
@@ -17,7 +19,7 @@ function SearchRelative() {
             <section className="outer-content-container">
                 <div className="inner-content-container">
                     <span>
-                        <p>Search Input field</p>
+                        <SearchField data={ data } />
                     </span>
                   <span>
                     <Button type="button" variant="primary" onClick={() => navigate('/relative/:id')}>Go to relative</Button>
