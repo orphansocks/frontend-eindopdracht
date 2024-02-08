@@ -4,16 +4,6 @@ import RegisterForm from "../components/forms/RegisterForm.jsx";
 import React from "react";
 
 function Register() {
-    //
-    // const {
-    //     handleSubmit,
-    //     formState: {errors},
-    //     register,
-    // } = useForm();
-    //
-    // function onFormSubmit(data) {
-    //     console.log(data);
-    // }
 
 
     return (
@@ -28,7 +18,6 @@ function Register() {
                     <p>Wanneer je nog geen account hebt, registreer je hier or whatever</p>
 
                     <RegisterForm />
-
 
                     <p>Are you a designer? Please apply <Link to="/apply">here</Link></p>
 

@@ -5,9 +5,9 @@ import CanvasWithPortraits from "../../components/CanvasWithPortraits.jsx";
 function AllRelatives() {
 
     const portraits = [
-        { x: 100, y: 100, radius: 50, color: 'red' },
-        { x: 230, y: 100, radius: 50, color: 'blue' },
-        { x: 360, y: 100, radius: 50, color: 'green' }
+        { x: 100, y: 100, radius: 50, color: 'LightYellow' },
+        { x: 230, y: 100, radius: 50, color: 'LightYellow' },
+        { x: 360, y: 100, radius: 50, color: 'LightYellow' }
     ];
 
 
@@ -21,13 +21,10 @@ function AllRelatives() {
 
                 <div className="inner-content-container">
 
-
-                    <p>Wil ik hier iets hebben staan?</p>
                     <p>Als je ingelogd bent, bekijk dan de <Link to="/allrelatives">Profielpagina</Link></p>
                     <p>Je kunt ook <Link to="/login">inloggen</Link> of jezelf <Link to="/register">registeren</Link> als je nog geen
                         account hebt.</p>
-
-                   <Portrait />
+                    <p>Hier onder volgt het CanvasWithPortraits</p>
 
                     <CanvasWithPortraits portraits={portraits} />
 

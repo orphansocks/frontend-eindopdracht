@@ -34,7 +34,12 @@ function ApplyAsDesignerForm() {
                 {errors.message && <span>Message is required</span>}
             </div>
 
-            <button type="submit">Submit</button>
+            <button
+                className="form-button"
+                type="submit"
+            >
+                Apply
+            </button>
         </form>
     );
 }

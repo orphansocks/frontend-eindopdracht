@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import AddNewRelativeForm from "../../components/forms/AddNewRelativeForm.jsx";
 
 function NewRelative() {
 
@@ -12,8 +13,8 @@ function NewRelative() {
             <section  className="outer-content-container">
 
                 <div className="inner-content-container">
-                    <p>Hier komt de content</p>
-                    <p>+ FORM</p>
+
+                    <AddNewRelativeForm />
 
                 </div>
 

@@ -5,7 +5,7 @@ form {
     padding: 32px 0;
     max-width: 450px;
     border-radius: 4px;
-    margin: 30px 0;
+    margin: 16px 0;
 }
 
 form label {
@@ -23,6 +23,27 @@ input {
     background-color: white;
 }
 
+select {
+    width: 450px;
+    padding: 16px 32px;
+    margin: 4px 0 12px 0;
+    border-radius: 50px;
+    border: 1px solid var(--color-black);
+    background-color: white;
+}
+
+textarea {
+    width: 450px;
+    padding: 16px 32px;
+    margin: 4px 0 12px 0;
+    border-radius: 24px;
+    border: 1px solid var(--color-black);
+    background-color: white;
+
+}
+
+textarea:focus,
+select:focus,
 input:focus {
     outline: 0 solid var(--color-black);
 }

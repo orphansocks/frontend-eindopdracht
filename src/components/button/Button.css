@@ -25,6 +25,27 @@ button:focus-visible {
     transition: border-color 0.25s;
 }
 
+.form-button {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--color-black);
+    border-radius: 50px;
+    padding: 0.8em 1.2em;
+    margin-top:30px;
+    font-size: 1em;
+    font-weight: 500;
+    transition: border-color 0.25s;
+}
+
+.form-button:focus,
+.form-button:focus-visible {
+    outline: 0px solid var(--color-black);
+}
+
+.form-button:hover {
+    background-color: var(--color-primary);
+}
+
 .button-primary {
     border-color: var(--color-black);
     border: 1px solid var(--color-black);
