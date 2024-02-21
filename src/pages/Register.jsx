@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import RegisterForm from "../components/forms/RegisterForm.jsx";
 import React from "react";
 

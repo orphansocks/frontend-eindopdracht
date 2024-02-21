@@ -44,7 +44,7 @@ function SearchForm({ onSearch }) {
 
             </form>
             <p>ZOEKRESULTAAT: toon de Maries hieronder</p>
-            <Link to="/relative/:id" className="back-link">
+            <Link to="/relatives/:id" className="back-link">
                 <p>VOOR NU: ga naar Marie</p>
             </Link>
 

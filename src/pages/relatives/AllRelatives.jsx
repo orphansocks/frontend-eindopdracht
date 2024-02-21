@@ -5,9 +5,9 @@ import CanvasWithPortraits from "../../components/CanvasWithPortraits.jsx";
 function AllRelatives() {
 
     const portraits = [
-        { x: 100, y: 100, radius: 50, color: 'LightYellow' },
-        { x: 230, y: 100, radius: 50, color: 'LightYellow' },
-        { x: 360, y: 100, radius: 50, color: 'LightYellow' }
+        { x: 100, y: 100, radius: 50 },
+        { x: 230, y: 100, radius: 50 },
+        { x: 360, y: 100, radius: 50 }
     ];
 
 

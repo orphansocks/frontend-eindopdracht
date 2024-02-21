@@ -48,16 +48,6 @@ function AddNewRelativeForm() {
             <input type="text" placeholder="namen gescheiden door komma" {...register("namesOfKids", { required: false })} />
             {errors.lastName && <span>This field is required</span>}
 
-            <label>Voeg toe aan groep</label>
-            <select
-                {...register("group", { required: true })}>
-                <option value="">Select ...</option>
-                <option value="family">Family</option>
-                <option value="friends">Friends</option>
-                <option value="colleagues">Colleagues</option>
-                <option value="neighbours">Neighbours</option>
-            </select>
-
             <label>Extra notities</label>
             <textarea {...register("misc")} placeholder="..." />
 
