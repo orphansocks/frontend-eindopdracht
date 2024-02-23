@@ -19,8 +19,11 @@ function Portrait({id, color, firstName}) {
         const centerX = canvas.width / 2 / scaleFactor;
         const centerY = canvas.height / 2 / scaleFactor;
         const radius = 80;
+        const radiusX = 40;
+        const radiusY = 80;
         const startAngle = 0;
         const endAngle = Math.PI * 2;
+
 
         // Draw the circle
         ctx.beginPath();
@@ -32,11 +35,44 @@ function Portrait({id, color, firstName}) {
         ctx.strokeStyle = {color}; // Outline color
         ctx.lineWidth = 1; // Outline thickness
         ctx.stroke();
+        ctx.closePath();
+
+        // Check if firstName is "Marie" to show the duplicated circle
+        if (firstName === "Marie") {
+            // Duplicate the circle and move it slightly
+            ctx.beginPath();
+            ctx.arc(centerX + 16, centerY + 0, radius, startAngle, endAngle); // Modify
+            // coordinates slightly
+            ctx.strokeStyle = color; // Outline color
+            ctx.lineWidth = 1; // Outline thickness
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        // Check if firstName is "Marie" to show the ellipse
+        if (firstName === "Eva") {
+
+            ctx.beginPath();
+            ctx.ellipse(centerX + 40, centerY + 0, radiusX, radiusY, 0, 0, 2 * Math.PI);
+
+            // Modify
+            // coordinates slightly
+            ctx.strokeStyle = color; // Outline color
+            ctx.lineWidth = 1; // Outline thickness
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+
+
+
+
 
         // Anti aliasing
         ctx.imageSmoothingEnabled = false;
 
-        ctx.closePath();
+
+
     }, [id]); // Empty dependency array ensures useEffect runs only once after initial render
 
     return (

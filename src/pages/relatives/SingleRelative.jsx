@@ -4,6 +4,8 @@ import Portrait from "../../components/portrait/Portrait.jsx";
 import React, {useState} from "react";
 import axios from "axios";
 import ErrorMessage from "../../components/errors/ErrorMessage.jsx";
+import calculateAge from "../../helpers/calculateAge.js";
+import formatBirthday from "../../helpers/formatBirthday.js";
 
 function SingleRelative() {
 
@@ -33,7 +35,7 @@ function SingleRelative() {
 
         <>
 
-            <h1 className="page-title">{relative.firstName}(47)</h1>
+            <h1 className="page-title">{relative.firstName} ({calculateAge(relative.dob)})</h1>
 
             <section className="outer-content-container">
 
@@ -42,20 +44,24 @@ function SingleRelative() {
                     <Button
                         type="button"
                         onClick={ fetchRelativeById }
-                        variant="primary">get Relative</Button>
+                        variant="primary">get {relative.firstName}</Button>
 
                     {Object.keys(relative).length > 0 && (
-
-                        <h3>NAME {relative.firstName} {relative.lastName} NICKNAME {relative.nickName} BIRTHDAY {relative.dob} TOGETHER WITH partner , {relative.amountOfKids} KIDS: {relative.namesOfKids} MISC " {relative.misc} " OUR RELATION {relative.relation} </h3>
-
+                        <>
+                            <h3>
+                                NAME {relative.firstName} NICKNAME {relative.nickName} BIRTHDAY {formatBirthday(relative.dob)} TOGETHER WITH {relative.nameOfPartner}, {relative.amountOfKids} KIDS: {relative.namesOfKids} MISC " {relative.misc} " OUR RELATION {relative.relation}
+                            </h3>
+                            <Portrait
+                                key={relative.id}
+                                id={relative.id}
+                                // firstName={relative.firstName}
+                            />
+                        </>
                     )}
+
                     {error && <ErrorMessage message="Something went wrong. Please try again." />}
 
 
-                    {/*<h3>NAME Marie Machielsen NICKNAME Marietje GEBOREN 10 juni 1976 GETROUWD met*/}
-                    {/*    Klaas Klaassen KIDS (3) Keesje Timmie & Sjakie RELATIVE Collega Utrecht MISC “geen sla geen*/}
-                    {/*    vla”*/}
-                    {/*</h3>*/}
 
 
 
