@@ -1,5 +1,5 @@
 .portrait-container {
-    flex-basis: 300px;
+    flex-basis: 240px;
     flex-shrink: 1;
     flex-grow: 0;
     background-color: var(--color-tertiary);
@@ -9,11 +9,11 @@
 }
 
     canvas {
-        width: 300px;
-        height: 300px;
+        width: 240px;
+        height: 240px;
     }
 
     .portrait-name {
-        font-size: 0.8em;
+        font-size: 0.9em;
         text-align: center;
     }

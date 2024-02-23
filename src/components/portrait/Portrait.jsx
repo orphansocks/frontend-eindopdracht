@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 import './Portrait.css';
+import {Link} from "react-router-dom";
 
-function Portrait({color}) {
+function Portrait({id, color, firstName}) {
+
+    // useeffect voor wat er gebeurd
 
     useEffect(() => {
-        // This code will run after the component has been rendered
-        const canvas = document.getElementById('portrait');
+        const canvas = document.getElementById(id);
         const ctx = canvas.getContext('2d');
         const scaleFactor = window.devicePixelRatio;
 
-        canvas.width = 300 * scaleFactor;
-        canvas.height = 300 * scaleFactor;
+        canvas.width = 240 * scaleFactor;
+        canvas.height = 240 * scaleFactor;
         ctx.scale(scaleFactor, scaleFactor);
 
 
@@ -35,13 +37,23 @@ function Portrait({color}) {
         ctx.imageSmoothingEnabled = false;
 
         ctx.closePath();
-    }, []); // Empty dependency array ensures useEffect runs only once after initial render
+    }, [id]); // Empty dependency array ensures useEffect runs only once after initial render
 
     return (
         <div className="portrait-container">
-            <canvas id="portrait" width="150" height="150"></canvas>
+            <canvas
+                id={id}
+                width="150"
+                height="150">
+
+            </canvas>
+
             {/*DEZE LINK ZIE JE ALLEEN OP DE OVERVIEW PAGINA*/}
-            <p className="portrait-name">MARIE</p>
+            <p className="portrait-name">
+                <Link to={`/relatives/${id}`}>{firstName}</Link>
+            </p>
+
+
 
         </div>
     );

@@ -41,7 +41,7 @@ function App() {
                     {/*<Route path="/allrelatives" element={isAuth ? <AllRelatives /> : <Navigate to="/login"/>} />*/}
                     <Route path="/allrelatives" element={<AllRelatives />} />
                     <Route path="/searchrelative" element={<SearchRelative />} />
-                    <Route path="/relatives/:id" element={<SingleRelative/>} />
+                    <Route path="/relatives/:id" element={<SingleRelative />} />
                     <Route path="*" element={<NotFoundPage />}/>
                 </Routes>
             </main>

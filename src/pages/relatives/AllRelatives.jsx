@@ -1,18 +1,33 @@
 import {Link} from "react-router-dom";
 import Portrait from "../../components/portrait/Portrait.jsx";
-import CanvasWithPortraits from "../../components/CanvasWithPortraits.jsx";
+import React, {useState} from "react";
+import Button from "../../components/button/Button.jsx";
+import ErrorMessage from "../../components/errors/ErrorMessage.jsx";
+import axios from "axios";
+import './Relatives.css';
 
 function AllRelatives() {
 
-    const portraits = [
-        { x: 100, y: 100, radius: 50 },
-        { x: 230, y: 100, radius: 50 },
-        { x: 360, y: 100, radius: 50 }
-    ];
+    // state voor de functionaliteit
+    const [relatives, setRelatives] = useState([]);
+    const [error, toggleError] = useState(false);
+
+    // de functie voor het ophalen van de data
+    async function fetchRelatives() {
+        toggleError(false);
+
+        try {
+            const response = await axios.get('http://localhost:8080/relatives');
+            console.log(response.data);
+            setRelatives(response.data);
+        } catch (e) {
+            console.error(e);
+            toggleError(true);
+        }
+    }
 
 
     return (
-
         <>
 
             <h1 className="page-title">All relatives</h1>
@@ -21,29 +36,38 @@ function AllRelatives() {
 
                 <div className="inner-content-container">
 
-                    <p>Als je ingelogd bent, bekijk dan de <Link to="/allrelatives">Profielpagina</Link></p>
                     <p>Je kunt ook <Link to="/login">inloggen</Link> of jezelf <Link to="/register">registeren</Link> als je nog geen
                         account hebt.</p>
-                    <p>Hier onder volgt het CanvasWithPortraits</p>
-
-                    <CanvasWithPortraits portraits={portraits} />
 
 
+                    <Button type="button"
+                            onClick={ fetchRelatives }
+                            variant="primary">Get all relatives</Button>
 
 
 
+                    {relatives.length > 0 && (
+
+                        <ul className="portrait-items-list">
+                            {relatives.map((relative) => {
+
+                                return <Portrait
+                                    key={relative.id}
+                                    id={relative.id}
+                                    firstName={relative.firstName}
+                                    />
+
+                                    })}
+                        </ul>
+                    )}
+                    {error && <ErrorMessage message="Something went wrong. Please try again." />}
 
 
 
                 </div>
 
 
-
-
-
-
             </section>
-
 
 
         </>

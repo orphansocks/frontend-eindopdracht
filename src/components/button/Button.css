@@ -38,6 +38,7 @@ button:focus-visible {
 }
 
 .form-button:focus,
+.button-primary:focus,
 .form-button:focus-visible {
     outline: 0px solid var(--color-black);
 }
@@ -59,7 +60,7 @@ button:focus-visible {
 }
 
 .button + .button {
-    margin-left: 20px; /* Example style for spacing */
+    margin-left: 20px;
 }
 
 

@@ -9,7 +9,7 @@ function Footer() {
 
         <footer className="outer-content-container sticky-footer">
             <div>
-                <p>Hier komt de verklaring van de kleuren van de relatives</p>
+                <p>We are all relatives</p>
             </div>
 
             <div className="copyright">

@@ -9,6 +9,7 @@
     background-color: var(--color-tertiary);
     color: var(--color-secondary);
     text-align: center;
+    margin-top: 60px;
     padding: 32px;
     font-weight: 400;
     position: sticky;
@@ -18,8 +19,5 @@
 }
 
 .copyright {
-
     font-size: 0.8em;
-
-
 }
