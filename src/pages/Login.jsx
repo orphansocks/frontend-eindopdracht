@@ -1,4 +1,6 @@
 import {Link} from "react-router-dom";
+import React from "react";
+import LoginForm from "../components/forms/LoginForm.jsx";
 
 function Login() {
 
@@ -13,13 +15,10 @@ function Login() {
             <section  className="outer-content-container">
 
                 <div className="inner-content-container">
-                    <p>Hier komt de content</p>
-                    <p>+ FORM</p>
-                    <form>
+
+                    <LoginForm />
 
 
-
-                    </form>
 
                     <p>Not having an account yet? Please register <Link to="/register">here</Link></p>
 

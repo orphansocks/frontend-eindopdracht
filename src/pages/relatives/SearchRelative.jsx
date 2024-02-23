@@ -1,27 +1,31 @@
 import Button from "../../components/button/Button.jsx";
-import {useNavigate} from "react-router-dom";
+import SearchForm from "../../components/forms/SearchForm.jsx";
 
 function SearchRelative() {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
+    // const data = "Marie"
+
+    const handleSearch = searchQuery => {
+        // SEARCH LOGIC!!
+        console.log('Searching for:', searchQuery);
+    };
 
 
     return (
 
-
         <>
 
-                    <h1 className="page-title">Search relative</h1>
+            <h1 className="page-title">Search relative</h1>
 
 
             <section className="outer-content-container">
                 <div className="inner-content-container">
-                    <span>
-                        <p>Search Input field</p>
-                    </span>
-                  <span>
-                    <Button type="button" variant="primary" onClick={() => navigate('/relative/:id')}>Go to relative</Button>
-                </span>
+
+                        <SearchForm
+                            onSearch={handleSearch} />
+
+
                 </div>
             </section>
 

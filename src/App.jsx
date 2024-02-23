@@ -1,4 +1,6 @@
-import { Route, Routes } from 'react-router-dom';
+import {Navigate, Route, Routes} from 'react-router-dom';
+import {useContext} from "react";
+import {AuthContext} from "./context/AuthContext.jsx";
 
 import './App.css';
 
@@ -20,7 +22,11 @@ import NotFoundPage from './pages/NotFoundPage';
 
 
 
+
+
 function App() {
+
+    const { isAuth } = useContext(AuthContext);
 
     return (
         <div className="App">
@@ -32,9 +38,10 @@ function App() {
                     <Route path="/apply" element={<Apply />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/newrelative" element={<NewRelative />} />
+                    {/*<Route path="/allrelatives" element={isAuth ? <AllRelatives /> : <Navigate to="/login"/>} />*/}
                     <Route path="/allrelatives" element={<AllRelatives />} />
                     <Route path="/searchrelative" element={<SearchRelative />} />
-                    <Route path="/relative/:id" element={<SingleRelative/>} />
+                    <Route path="/relatives/:id" element={<SingleRelative />} />
                     <Route path="*" element={<NotFoundPage />}/>
                 </Routes>
             </main>
