@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './Portrait.css';
 import {Link} from "react-router-dom";
 
-function Portrait({id, color, firstName}) {
+function Portrait({id, color, firstName, socialStatus, amountOfKids}) {
 
     // useeffect voor wat er gebeurd
 
@@ -19,48 +19,113 @@ function Portrait({id, color, firstName}) {
         const centerX = canvas.width / 2 / scaleFactor;
         const centerY = canvas.height / 2 / scaleFactor;
         const radius = 80;
-        const radiusX = 40;
+        const radiusX = 50;
         const radiusY = 80;
         const startAngle = 0;
         const endAngle = Math.PI * 2;
 
 
-        // Draw the circle
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-        // ctx.fillStyle = "blue";
-        // ctx.fill();
-
-        // Draw the outline
-        ctx.strokeStyle = {color}; // Outline color
-        ctx.lineWidth = 1; // Outline thickness
-        ctx.stroke();
-        ctx.closePath();
-
-        // Check if firstName is "Marie" to show the duplicated circle
-        if (firstName === "Marie") {
-            // Duplicate the circle and move it slightly
+        // Draw a circle
+        if (socialStatus === "Single") {
             ctx.beginPath();
-            ctx.arc(centerX + 16, centerY + 0, radius, startAngle, endAngle); // Modify
-            // coordinates slightly
-            ctx.strokeStyle = color; // Outline color
-            ctx.lineWidth = 1; // Outline thickness
+            ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+            // ctx.fillStyle = "blue";
+            // ctx.fill();
+
+            ctx.strokeStyle = {color};
+            ctx.lineWidth = 1;
             ctx.stroke();
             ctx.closePath();
         }
 
-        // Check if firstName is "Marie" to show the ellipse
-        if (firstName === "Eva") {
-
+        // Check if firstName is "Marie" to show the duplicated circle
+        if (firstName === "Marie") {
+            ctx.save(); // Save the current transformation state
             ctx.beginPath();
-            ctx.ellipse(centerX + 40, centerY + 0, radiusX, radiusY, 0, 0, 2 * Math.PI);
-
-            // Modify
-            // coordinates slightly
-            ctx.strokeStyle = color; // Outline color
-            ctx.lineWidth = 1; // Outline thickness
+            ctx.arc(centerX , centerY , radius, startAngle, endAngle);
+            ctx.strokeStyle = {color};
+            ctx.lineWidth = 1;
             ctx.stroke();
             ctx.closePath();
+            ctx.restore(); // Restore the transformation state
+        }
+
+        // ellipse for amountofkids
+        if (amountOfKids === 1 || amountOfKids === 2 || amountOfKids === 3) {
+            ctx.save(); // Save the current transformation state
+            ctx.beginPath();
+            ctx.ellipse(centerX, centerY, radiusX, radiusY, 45, 0, 2 * Math.PI);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore(); // Restore the transformation state
+        }
+
+        // ellipse for amountofkids
+        if (amountOfKids === 2 || amountOfKids === 3) {
+            ctx.save(); // Save the current transformation state
+            ctx.beginPath();
+            ctx.ellipse(centerX, centerY, radiusX, radiusY, -45, 0, 2 * Math.PI);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore(); // Restore the transformation state
+        }
+
+        // ellipse for amountofkids
+        if (amountOfKids === 3) {
+            ctx.save(); // Save the current transformation state
+            ctx.beginPath();
+            ctx.ellipse(centerX, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore(); // Restore the transformation state
+        }
+
+        if (socialStatus === "together") {
+            ctx.save(); // Save the current transformation state
+            ctx.beginPath();
+            ctx.ellipse(centerX -40, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore(); // Restore the transformation state
+
+            ctx.save(); // Save the current transformation state
+            ctx.beginPath();
+            ctx.ellipse(centerX + 40, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore(); // Restore the transformation state
+        }
+
+
+        if (socialStatus === "divorced") {
+            ctx.save(); // Save the current transformation state
+            ctx.beginPath();
+            ctx.ellipse(centerX -40, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore(); // Restore the transformation state
+
+            ctx.save(); // Save the current transformation state
+            ctx.beginPath();
+            ctx.ellipse(centerX + 40, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.setLineDash([2, 2]);
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore(); // Restore the transformation state
         }
 
 

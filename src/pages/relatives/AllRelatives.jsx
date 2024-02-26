@@ -55,6 +55,8 @@ function AllRelatives() {
                                     key={relative.id}
                                     id={relative.id}
                                     firstName={relative.firstName}
+                                    socialStatus={relative.socialStatus}
+                                    amountOfKids={relative.amountOfKids}
                                     />
 
                                     })}

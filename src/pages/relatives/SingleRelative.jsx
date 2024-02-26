@@ -54,7 +54,9 @@ function SingleRelative() {
                             <Portrait
                                 key={relative.id}
                                 id={relative.id}
-                                // firstName={relative.firstName}
+                                firstName={relative.firstName}
+                                socialStatus={relative.socialStatus}
+                                amountOfKids={relative.amountOfKids}
                             />
                         </>
                     )}

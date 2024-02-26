@@ -14,7 +14,7 @@ function NavBar() {
                 {/*DEZE DIV WIL JE ALEEN ZIEN WANNEER INGELOGD ISAUTH IS TRUE*/}
                 <div>
                 <ul className="main-navigation-links">
-                    <li><Link to="/allrelatives">Show All</Link></li>
+                    <li><Link to="/allrelatives">Show</Link></li>
                     <li><Link to="/newrelative">Add</Link></li>
                     <li><Link to="/searchrelative">Search</Link></li>
                 </ul>
