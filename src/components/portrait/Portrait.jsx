@@ -1,8 +1,24 @@
 import React, { useEffect } from 'react';
 import './Portrait.css';
 import {Link} from "react-router-dom";
+import { House, Heart, Tree, Student, Square } from '@phosphor-icons/react';
 
-function Portrait({id, color, firstName, socialStatus, amountOfKids}) {
+function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) {
+
+function drawIcon(relation) {
+    switch (relation) {
+        case "friends":
+            return <Heart size={24}/>
+        case "family":
+            return <Tree size={24}/>
+        case "study":
+            return <Student size={24}/>
+        case "neighbour":
+            return <House size={24}/>
+        default:
+            return <Square size={24}/>
+    }
+}
 
     // useeffect voor wat er gebeurd
 
@@ -25,26 +41,54 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids}) {
         const endAngle = Math.PI * 2;
 
 
-        // Draw a circle
-        if (socialStatus === "Single") {
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-            // ctx.fillStyle = "blue";
-            // ctx.fill();
-
-            ctx.strokeStyle = {color};
-            ctx.lineWidth = 1;
-            ctx.stroke();
-            ctx.closePath();
-        }
-
-        // Check if firstName is "Marie" to show the duplicated circle
-        if (firstName === "Marie") {
+        // Check social status
+        if (socialStatus === "single") {
             ctx.save(); // Save the current transformation state
             ctx.beginPath();
             ctx.arc(centerX , centerY , radius, startAngle, endAngle);
             ctx.strokeStyle = {color};
             ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore(); // Restore the transformation state
+        }
+
+        if (socialStatus === "together" || socialStatus ==="married") {
+            ctx.save(); // Save the current transformation state
+            ctx.beginPath();
+            ctx.ellipse(centerX -40, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore(); // Restore the transformation state
+
+            ctx.save(); // Save the current transformation state
+            ctx.beginPath();
+            ctx.ellipse(centerX + 40, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore(); // Restore the transformation state
+        }
+
+        if (socialStatus === "divorced") {
+            ctx.save(); // Save the current transformation state
+            ctx.beginPath();
+            ctx.ellipse(centerX -40, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore(); // Restore the transformation state
+
+            ctx.save(); // Save the current transformation state
+            ctx.beginPath();
+            ctx.ellipse(centerX + 40, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.setLineDash([2, 2]);
             ctx.stroke();
             ctx.closePath();
             ctx.restore(); // Restore the transformation state
@@ -86,56 +130,10 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids}) {
             ctx.restore(); // Restore the transformation state
         }
 
-        if (socialStatus === "together") {
-            ctx.save(); // Save the current transformation state
-            ctx.beginPath();
-            ctx.ellipse(centerX -40, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
-            ctx.strokeStyle = color;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-            ctx.closePath();
-            ctx.restore(); // Restore the transformation state
-
-            ctx.save(); // Save the current transformation state
-            ctx.beginPath();
-            ctx.ellipse(centerX + 40, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
-            ctx.strokeStyle = color;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-            ctx.closePath();
-            ctx.restore(); // Restore the transformation state
-        }
-
-
-        if (socialStatus === "divorced") {
-            ctx.save(); // Save the current transformation state
-            ctx.beginPath();
-            ctx.ellipse(centerX -40, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
-            ctx.strokeStyle = color;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-            ctx.closePath();
-            ctx.restore(); // Restore the transformation state
-
-            ctx.save(); // Save the current transformation state
-            ctx.beginPath();
-            ctx.ellipse(centerX + 40, centerY, radiusX, radiusY, 0, 0, 2 * Math.PI);
-            ctx.strokeStyle = color;
-            ctx.lineWidth = 1;
-            ctx.setLineDash([2, 2]);
-            ctx.stroke();
-            ctx.closePath();
-            ctx.restore(); // Restore the transformation state
-        }
-
-
-
-
 
 
         // Anti aliasing
         ctx.imageSmoothingEnabled = false;
-
 
 
     }, [id]); // Empty dependency array ensures useEffect runs only once after initial render
@@ -151,8 +149,12 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids}) {
 
             {/*DEZE LINK ZIE JE ALLEEN OP DE OVERVIEW PAGINA*/}
             <p className="portrait-name">
+
                 <Link to={`/relatives/${id}`}>{firstName}</Link>
             </p>
+            <div>
+                {drawIcon(relation)}
+            </div>
 
 
 

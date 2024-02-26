@@ -1,7 +1,7 @@
 import {Link, useParams} from "react-router-dom";
 import Button from "../../components/button/Button.jsx";
 import Portrait from "../../components/portrait/Portrait.jsx";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import ErrorMessage from "../../components/errors/ErrorMessage.jsx";
 import calculateAge from "../../helpers/calculateAge.js";
@@ -31,6 +31,12 @@ function SingleRelative() {
         }
     }
 
+
+    // useEffect om de relative by Id te laden on pageload
+    useEffect(() => {
+        fetchRelativeById();
+    }, []);
+
     return (
 
         <>
@@ -41,10 +47,10 @@ function SingleRelative() {
 
                 <div className="inner-content-container">
 
-                    <Button
-                        type="button"
-                        onClick={ fetchRelativeById }
-                        variant="primary">get {relative.firstName}</Button>
+                    {/*<Button*/}
+                    {/*    type="button"*/}
+                    {/*    onClick={ fetchRelativeById }*/}
+                    {/*    variant="primary">get {relative.firstName}</Button>*/}
 
                     {Object.keys(relative).length > 0 && (
                         <>

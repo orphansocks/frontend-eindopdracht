@@ -92,7 +92,7 @@ function AddNewRelativeForm() {
 
             <label>Name of Partner</label>
             <input type="text" {...register("nameOfPartner", { required: false })} />
-            {errors.nameOfPartner && <span>This field is required</span>}
+            {errors.nameOfPartner && <span>This field is NOT required</span>}
 
             <label>Has kids</label>
             <select {...register("hasKids", { required: false })}>
@@ -104,11 +104,11 @@ function AddNewRelativeForm() {
 
             <label>Amount of kids</label>
             <input type="text" {...register("amountOfKids", { required: false })} />
-            {errors.amountOfKids && <span>This field is required</span>}
+            {errors.amountOfKids && <span>This field is NOT required</span>}
 
             <label>Name(s) of kid(s)</label>
             <input type="text" placeholder="name(s separated by a comma)" {...register("namesOfKids", { required: false })} />
-            {errors.name && <span>This field is required</span>}
+            {errors.name && <span>This field is NOT required</span>}
 
             <label>Our relation *</label>
             <select
@@ -128,6 +128,7 @@ function AddNewRelativeForm() {
 
             <label>Miscellaneous</label>
             <textarea {...register("misc", {required: false})} placeholder="..." />
+            {errors.name && <span>This field is NOT required</span>}
 
 
             <button

@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import Portrait from "../../components/portrait/Portrait.jsx";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Button from "../../components/button/Button.jsx";
 import ErrorMessage from "../../components/errors/ErrorMessage.jsx";
 import axios from "axios";
@@ -19,12 +19,19 @@ function AllRelatives() {
         try {
             const response = await axios.get('http://localhost:8080/relatives');
             console.log(response.data);
+
+
             setRelatives(response.data);
         } catch (e) {
             console.error(e);
             toggleError(true);
         }
     }
+
+    // useEffect om de relatives te laden on pageload
+    useEffect(() => {
+        fetchRelatives();
+    }, []);
 
 
     return (
@@ -36,13 +43,12 @@ function AllRelatives() {
 
                 <div className="inner-content-container">
 
-                    <p>Je kunt ook <Link to="/login">inloggen</Link> of jezelf <Link to="/register">registeren</Link> als je nog geen
-                        account hebt.</p>
+                    <p> If your relatives are not showing, please <Link to="/login">login</Link> or <Link to="/register">register</Link> first</p>
 
 
-                    <Button type="button"
-                            onClick={ fetchRelatives }
-                            variant="primary">Get all relatives</Button>
+                    {/*<Button type="button"*/}
+                    {/*        onClick={ fetchRelatives }*/}
+                    {/*        variant="primary">Get all relatives</Button>*/}
 
 
 
@@ -57,6 +63,7 @@ function AllRelatives() {
                                     firstName={relative.firstName}
                                     socialStatus={relative.socialStatus}
                                     amountOfKids={relative.amountOfKids}
+                                    relation={relative.relation}
                                     />
 
                                     })}
