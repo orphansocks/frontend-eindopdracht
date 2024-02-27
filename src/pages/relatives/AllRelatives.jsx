@@ -1,7 +1,6 @@
 import {Link} from "react-router-dom";
 import Portrait from "../../components/portrait/Portrait.jsx";
 import React, {useEffect, useState} from "react";
-import Button from "../../components/button/Button.jsx";
 import ErrorMessage from "../../components/errors/ErrorMessage.jsx";
 import axios from "axios";
 import './Relatives.css';
@@ -44,6 +43,7 @@ function AllRelatives() {
                 <div className="inner-content-container">
 
                     <p> If your relatives are not showing, please <Link to="/login">login</Link> or <Link to="/register">register</Link> first</p>
+                    <p> <Link to="/allgroups">Go yo your groups ></Link></p>
 
 
                     {/*<Button type="button"*/}

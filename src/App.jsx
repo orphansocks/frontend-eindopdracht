@@ -18,6 +18,8 @@ import AllRelatives from './pages/relatives/AllRelatives';
 import SearchRelative from './pages/relatives/SearchRelative';
 import SingleRelative from './pages/relatives/SingleRelative';
 
+import AllGroups from './pages/groups/AllGroups';
+
 import NotFoundPage from './pages/NotFoundPage';
 
 
@@ -34,14 +36,19 @@ function App() {
             <main className="content">
                 <Routes>
                     <Route path="/" element={<Home />} />
+
                     <Route path="/register" element={<Register />} />
                     <Route path="/apply" element={<Apply />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/newrelative" element={<NewRelative />} />
+
                     {/*<Route path="/allrelatives" element={isAuth ? <AllRelatives /> : <Navigate to="/login"/>} />*/}
                     <Route path="/allrelatives" element={<AllRelatives />} />
+                    <Route path="/newrelative" element={<NewRelative />} />
                     <Route path="/searchrelative" element={<SearchRelative />} />
                     <Route path="/relatives/:id" element={<SingleRelative />} />
+
+                    <Route path="/allgroups" element={<AllGroups />} />
+
                     <Route path="*" element={<NotFoundPage />}/>
                 </Routes>
             </main>

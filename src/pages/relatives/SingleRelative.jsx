@@ -81,18 +81,21 @@ function SingleRelative() {
                 <div className="inner-content-container">
                     <span>
                     <Button type="button" variant="primary"
-                            onClick={() => navigate('/searchrelative')}>Aanpassen</Button>
+                            onClick={() => navigate('/searchrelative')}>Change</Button>
                     <Button type="button" variant="primary"
-                            onClick={() => navigate('/searchrelative')}>Verwijderen</Button>
+                            onClick={() => navigate('/searchrelative')}>Delete</Button>
                 </span>
-                    <span>
+                </div>
+            </section>
+
+            <section className="outer-content-container">
+            <div className="inner-content-container">
+                     <span>
                     <Link to="/allrelatives" className="back-link">
-                        <p>Terug naar de overzichtspagina</p>
+                        <p>Back to your relatives</p>
                     </Link>
                         </span>
-
-                </div>
-
+            </div>
             </section>
 
 

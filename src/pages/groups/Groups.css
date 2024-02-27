@@ -1,0 +1,11 @@
+.group-items-list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    row-gap: 16px;
+    column-gap: 16px;
+
+}

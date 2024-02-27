@@ -1,24 +1,10 @@
 import React, { useEffect } from 'react';
 import './Portrait.css';
 import {Link} from "react-router-dom";
-import { House, Heart, Tree, Student, Square } from '@phosphor-icons/react';
 
 function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) {
 
-function drawIcon(relation) {
-    switch (relation) {
-        case "friends":
-            return <Heart size={24}/>
-        case "family":
-            return <Tree size={24}/>
-        case "study":
-            return <Student size={24}/>
-        case "neighbour":
-            return <House size={24}/>
-        default:
-            return <Square size={24}/>
-    }
-}
+
 
     // useeffect voor wat er gebeurd
 
@@ -30,7 +16,6 @@ function drawIcon(relation) {
         canvas.width = 240 * scaleFactor;
         canvas.height = 240 * scaleFactor;
         ctx.scale(scaleFactor, scaleFactor);
-
 
         const centerX = canvas.width / 2 / scaleFactor;
         const centerY = canvas.height / 2 / scaleFactor;
@@ -46,7 +31,7 @@ function drawIcon(relation) {
             ctx.save(); // Save the current transformation state
             ctx.beginPath();
             ctx.arc(centerX , centerY , radius, startAngle, endAngle);
-            ctx.strokeStyle = {color};
+            ctx.strokeStyle = color;
             ctx.lineWidth = 1;
             ctx.stroke();
             ctx.closePath();
@@ -131,6 +116,35 @@ function drawIcon(relation) {
         }
 
 
+        // Determine fill color based on relation
+        let fillColor = "#201e1f"
+        switch (relation) {
+            case "friends":
+                fillColor = "#FC02FF";
+                break;
+            case "family":
+                fillColor = "#41FA91";
+                break;
+            case "study":
+                fillColor = "#85A090";
+                break;
+            case "neighbour":
+                fillColor = "#ECF3DB";
+                break;
+            default:
+                fillColor = "#FEC016";
+        }
+
+        // Dot for relation
+        ctx.save(); // Save the current transformation state
+        ctx.beginPath();
+        ctx.arc(centerX -90 , centerY +90 , 9, startAngle, endAngle);
+        ctx.fillStyle = fillColor;
+        ctx.fill();
+        // ctx.stroke();
+        ctx.closePath();
+        ctx.restore(); // Restore the transformation state
+
 
         // Anti aliasing
         ctx.imageSmoothingEnabled = false;
@@ -152,9 +166,7 @@ function drawIcon(relation) {
 
                 <Link to={`/relatives/${id}`}>{firstName}</Link>
             </p>
-            <div>
-                {drawIcon(relation)}
-            </div>
+
 
 
 
