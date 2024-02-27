@@ -19,6 +19,7 @@ import SearchRelative from './pages/relatives/SearchRelative';
 import SingleRelative from './pages/relatives/SingleRelative';
 
 import AllGroups from './pages/groups/AllGroups';
+import SingleGroup from './pages/groups/SingleGroup';
 
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -48,6 +49,7 @@ function App() {
                     <Route path="/relatives/:id" element={<SingleRelative />} />
 
                     <Route path="/allgroups" element={<AllGroups />} />
+                    <Route path="/groups/:id" element={<SingleGroup />} />
 
                     <Route path="*" element={<NotFoundPage />}/>
                 </Routes>

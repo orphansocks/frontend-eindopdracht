@@ -55,7 +55,7 @@ function SingleRelative() {
                     {Object.keys(relative).length > 0 && (
                         <>
                             <h3>
-                                NAME {relative.firstName} NICKNAME {relative.nickName} BIRTHDAY {formatBirthday(relative.dob)} TOGETHER WITH {relative.nameOfPartner}, {relative.amountOfKids} KIDS: {relative.namesOfKids} MISC " {relative.misc} " OUR RELATION {relative.relation}
+                                NAME {relative.firstName} {relative.lastName} NICKNAME {relative.nickName} BIRTHDAY {formatBirthday(relative.dob)} TOGETHER WITH {relative.nameOfPartner}, {relative.amountOfKids} KIDS: {relative.namesOfKids} MISC " {relative.misc} " OUR RELATION {relative.relation}
                             </h3>
                             <Portrait
                                 key={relative.id}
@@ -92,7 +92,7 @@ function SingleRelative() {
             <div className="inner-content-container">
                      <span>
                     <Link to="/allrelatives" className="back-link">
-                        <p>Back to your relatives</p>
+                        <p>Back to all relatives</p>
                     </Link>
                         </span>
             </div>

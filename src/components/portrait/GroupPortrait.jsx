@@ -40,7 +40,7 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives }) {
         // Dot for relatives within the circle limits
         groupRelatives.forEach((relative) => {
             const randomAngle = Math.random() * Math.PI * 2;
-            const randomDistance = Math.random() * radius;
+            const randomDistance = Math.random() * radius -12;
 
             // Calculate dot coordinates within the circle
             const randomX = centerX + randomDistance * Math.cos(randomAngle);
@@ -75,6 +75,7 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives }) {
             <span className="portrait-name">
 
                 <p><Link to={`/groups/${id}`}>{groupName}</Link></p>
+                {/*// IF GROUPPLACE*/}
                 <p><MapPin size={24} weight="light" /> {groupPlace}</p>
             </span>
 
