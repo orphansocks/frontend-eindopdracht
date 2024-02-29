@@ -43,7 +43,7 @@ function AllRelatives() {
                 <div className="inner-content-container">
 
                     <p> If your relatives are not showing, please <Link to="/login">login</Link> or <Link to="/register">register</Link> first</p>
-                    <p> <Link to="/allgroups">Go to your groups ></Link></p>
+                    <p> <Link to="/allgroups">Go to your groups</Link></p>
 
 
                     {/*<Button type="button"*/}

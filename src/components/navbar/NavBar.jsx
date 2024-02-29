@@ -10,17 +10,14 @@ function NavBar() {
             <div className="inner-nav-container">
 
                 <div className="nav-item">
-                <p><Link to="/">relatives</Link></p>
+                    <ul className="main-navigation-links">
+                        <li className="nav-logo"><Link to="/">relatives</Link></li>
+                        <li><Link to="/allrelatives">Show</Link></li>
+                        <li><Link to="/newrelative">Add</Link></li>
+                        <li><Link to="/searchrelative">Search</Link></li>
+                    </ul>
                 </div>
 
-                {/*DEZE DIV WIL JE ALEEN ZIEN WANNEER INGELOGD ISAUTH IS TRUE*/}
-                <div className="nav-item">
-                <ul className="main-navigation-links">
-                    <li><Link to="/allrelatives">Show</Link></li>
-                    <li><Link to="/newrelative">Add</Link></li>
-                    <li><Link to="/searchrelative">Search</Link></li>
-                </ul>
-                </div>
 
                 {/*REGISTER IS ALLEEN ZICHTBAAR ALS ISAUTH FALSE IS*/}
                 {/*LOGIN IS ALLEEN ZICHTBAAR ALS ISAUTH FALSE IS*/}

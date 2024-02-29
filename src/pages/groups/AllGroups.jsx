@@ -42,7 +42,9 @@ function AllGroups() {
 
                 <div className="inner-content-container">
 
-                    <p> If your groups are not showing, please make sure you have groups or <Link to="/login">login</Link> or <Link to="/register">register</Link> first</p>
+                    <p> If your groups are not showing, please make sure you have groups</p>
+                    <p> or <Link to="/login">login</Link> or <Link to="/register">register</Link> first</p>
+                    <p>  <Link to="/register">create group</Link></p>
 
 
                     {/*<Button type="button"*/}

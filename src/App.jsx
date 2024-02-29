@@ -13,15 +13,18 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Apply from './pages/Apply';
 
-import NewRelative from './pages/relatives/NewRelative';
 import AllRelatives from './pages/relatives/AllRelatives';
-import SearchRelative from './pages/relatives/SearchRelative';
 import SingleRelative from './pages/relatives/SingleRelative';
+import NewRelative from './pages/relatives/NewRelative';
+import SearchRelative from './pages/relatives/SearchRelative';
 
 import AllGroups from './pages/groups/AllGroups';
 import SingleGroup from './pages/groups/SingleGroup';
 
+import AllCards from "./pages/cards/AllCards.jsx";
+
 import NotFoundPage from './pages/NotFoundPage';
+
 
 
 
@@ -50,6 +53,8 @@ function App() {
 
                     <Route path="/allgroups" element={<AllGroups />} />
                     <Route path="/groups/:id" element={<SingleGroup />} />
+
+                    <Route path="/allcards" element={<AllCards />} />
 
                     <Route path="*" element={<NotFoundPage />}/>
                 </Routes>

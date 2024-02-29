@@ -20,6 +20,10 @@
 
 }
 
+.nav-logo {
+    font-size: 1.6em;
+}
+
 
 
 .main-navigation a,
@@ -40,6 +44,7 @@
     flex-basis: auto;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
     column-gap: 30px;
 }

@@ -11,6 +11,7 @@ function SearchForm() {
     const [searchResults, setSearchResults] = useState([]);
     const [error, toggleError] = useState(false);
 
+
    // de functie voor het ophalen van de zoekdata
     async function handleSearch(event) {
         console.log("searching for:", searchQuery);

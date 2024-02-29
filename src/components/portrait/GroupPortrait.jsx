@@ -49,6 +49,8 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives }) {
             const dotRadius = 8;
             const dotColor = "#FEC016";
 
+
+
         // draw dots for the relatives in the array
         ctx.beginPath();
             ctx.arc(randomX, randomY, dotRadius, startAngle, endAngle);

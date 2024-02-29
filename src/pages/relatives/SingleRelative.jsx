@@ -1,4 +1,4 @@
-import {Link, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import Button from "../../components/button/Button.jsx";
 import Portrait from "../../components/portrait/Portrait.jsx";
 import React, {useEffect, useState} from "react";
@@ -12,6 +12,7 @@ function SingleRelative() {
     // state voor de functionaliteit
     const [relative, setRelative] = useState([]);
     const [error, toggleError] = useState(false);
+    const navigate = useNavigate();
 
     // de parameter voor het ophalen van de juiste relative
     const {id} = useParams()
@@ -84,6 +85,8 @@ function SingleRelative() {
                             onClick={() => navigate('/searchrelative')}>Change</Button>
                     <Button type="button" variant="primary"
                             onClick={() => navigate('/searchrelative')}>Delete</Button>
+                         <Button type="button" variant="primary"
+                                 onClick={() => navigate('/allcards')}>Send a card</Button>
                 </span>
                 </div>
             </section>
