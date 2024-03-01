@@ -13,12 +13,18 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Apply from './pages/Apply';
 
-import NewRelative from './pages/relatives/NewRelative';
 import AllRelatives from './pages/relatives/AllRelatives';
-import SearchRelative from './pages/relatives/SearchRelative';
 import SingleRelative from './pages/relatives/SingleRelative';
+import NewRelative from './pages/relatives/NewRelative';
+import SearchRelative from './pages/relatives/SearchRelative';
+
+import AllGroups from './pages/groups/AllGroups';
+import SingleGroup from './pages/groups/SingleGroup';
+
+import AllCards from "./pages/cards/AllCards.jsx";
 
 import NotFoundPage from './pages/NotFoundPage';
+
 
 
 
@@ -34,14 +40,22 @@ function App() {
             <main className="content">
                 <Routes>
                     <Route path="/" element={<Home />} />
+
                     <Route path="/register" element={<Register />} />
                     <Route path="/apply" element={<Apply />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/newrelative" element={<NewRelative />} />
+
                     {/*<Route path="/allrelatives" element={isAuth ? <AllRelatives /> : <Navigate to="/login"/>} />*/}
                     <Route path="/allrelatives" element={<AllRelatives />} />
+                    <Route path="/newrelative" element={<NewRelative />} />
                     <Route path="/searchrelative" element={<SearchRelative />} />
                     <Route path="/relatives/:id" element={<SingleRelative />} />
+
+                    <Route path="/allgroups" element={<AllGroups />} />
+                    <Route path="/groups/:id" element={<SingleGroup />} />
+
+                    <Route path="/allcards" element={<AllCards />} />
+
                     <Route path="*" element={<NotFoundPage />}/>
                 </Routes>
             </main>

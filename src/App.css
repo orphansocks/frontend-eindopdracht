@@ -8,7 +8,6 @@
 .content {
   flex: 1;
 }
-
   .outer-content-container {
     width: 100%;
     display: flex;
@@ -19,7 +18,7 @@
   /*DE BINNENSTE CONTAINER HEEFT EEN x BREEDTE ZODAT DE CONTENT NIET ZOVER WORDT UITGEREKT OP EEN
   SUPPER BREED SCHERM. DE CONTAINER MAG KRIMPEN EN NIET UITZETTEN*/
   .inner-content-container {
-    flex-basis: 1400px;
+    flex-basis: 1264px;
     flex-shrink: 1;
     flex-grow: 0;
     background-color: var(--color-primary);

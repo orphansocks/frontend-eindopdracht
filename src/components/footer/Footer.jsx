@@ -13,7 +13,7 @@ function Footer() {
             </div>
 
             <div className="copyright">
-                <p>relatives &copy; Eva van Dongen - 2024 - eindopdracht NOVI Hogeschool</p>
+                <p>relatives &copy; Eva van Dongen - 2024 - eindopdracht Full Stack Development Bootcamp @ NOVI Hogeschool</p>
             </div>
 
         </footer>

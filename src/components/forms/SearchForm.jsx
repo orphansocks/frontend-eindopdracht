@@ -1,69 +1,89 @@
 import React, { useState } from 'react';
 import './Forms.css';
-import {useForm} from "react-hook-form";
-import Button from "../button/Button.jsx";
-import {Link} from "react-router-dom";
+import Portrait from "../portrait/Portrait.jsx";
+import ErrorMessage from "../errors/ErrorMessage.jsx";
+import axios from "axios";
 
-function SearchForm({ onSearch }) {
 
-    const { register, handleSubmit } = useForm();
+function SearchForm() {
 
-    const onSubmit = data => {
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+    const [error, toggleError] = useState(false);
 
-        onSearch(data.searchQuery);
+
+   // de functie voor het ophalen van de zoekdata
+    async function handleSearch(event) {
+        console.log("searching for:", searchQuery);
+        event.preventDefault();
+        toggleError(false);
+
+        try {
+            const response = await axios.get(`http://localhost:8080/relatives/name/${searchQuery}`);
+            console.log(response.data);
+
+            setSearchResults(response.data);
+            setSearchQuery('');
+        } catch (e) {
+            console.error(e);
+            toggleError(true);
+
+        }
+    }
+
+
+    const handleSearchChange = (event) => {
+        const value = event.target.value;
+        setSearchQuery(value);
+
+        // const filteredResults = searchResult.filter(item =>
+        //     item.toLowerCase().includes(value.toLowerCase())
+        // );
+        //
+        // setSearchResult(filteredResults);
     };
 
-    // const [searchTerm, setSearchTerm] = useState('');
-    // const [searchResults, setSearchResults] = useState([]);
-    //
-    // const handleSearchChange = (event) => {
-    //     const value = event.target.value;
-    //     setSearchTerm(value);
-    //
-    //     const filteredResults = data.filter(item =>
-    //         item.toLowerCase().includes(value.toLowerCase())
-    //     );
-    //
-    //     setSearchResults(filteredResults);
-    // };
-
     return (
-        <div>
+        <div className="inner-content-container">
+            <form>
+            <input
+                type="text"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                placeholder="Search on name ..."
+            />
 
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input
-                    type="text"
-                    placeholder="Search"
-                    {...register('searchQuery', { required: true })}
-                />
-
-                {/*<button*/}
-                {/*    className="form-button"*/}
-                {/*    type="submit">*/}
-                {/*    Search</button>*/}
+            <button className="form-button"
+                    type="submit"
+                    onClick={handleSearch}>
+                Search
+            </button>
+            {error && <ErrorMessage message="Something went wrong. Please try again." />}
 
             </form>
-            <p>ZOEKRESULTAAT: toon de Maries hieronder</p>
-            <Link to="/relatives/:id" className="back-link">
-                <p>VOOR NU: ga naar Marie</p>
-            </Link>
 
 
+                <div >
+                    {searchResults.length > 0 && (
 
-            {/*<input*/}
-            {/*    type="text"*/}
-            {/*    placeholder="Search ..."*/}
-            {/*    value={ searchTerm }*/}
-            {/*    onChange={handleSearchChange}*/}
-            {/*/>*/}
+                        <ul className="portrait-items-list">
+                            {searchResults.map((relative) => {
 
-            {/*<ul>*/}
-            {/*    {searchResults.map((result, index) => (*/}
-            {/*        <li key={index}>{result}</li>*/}
-            {/*    ))}*/}
-            {/*</ul>*/}
+                                return <Portrait
+                                    key={relative.id}
+                                    id={relative.id}
+                                    firstName={relative.firstName}
+                                    socialStatus={relative.socialStatus}
+                                    amountOfKids={relative.amountOfKids}
+                                />
+
+                            })}
+                        </ul>
+                    )}
+
+                </div>
         </div>
     );
-}
 
+            }
 export default SearchForm;

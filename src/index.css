@@ -1,6 +1,7 @@
 /*In dit bestand plaats je alle algemene styling die geldt voor de gehele applicatie*/
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
 
+
 :root {
   --color-primary: #AFBFC5;
   --color-secondary: #201e1f;
@@ -26,7 +27,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  color: var(--color-secondary);
+  color: var(--color-black);
+  /*background-color: var(--color-primary);*/
 }
 
 
