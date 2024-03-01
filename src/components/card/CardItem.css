@@ -1,0 +1,21 @@
+.card-item-container {
+    flex-basis: 240px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    background-color: var(--color-tertiary);
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.card-item-title {
+    text-align: center;
+}
+
+.card-item-designer {
+    text-align: center;
+}
+
+.card-item-category {
+    text-align: center;
+}
