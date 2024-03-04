@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import './Portrait.css';
 import { MapPin } from "@phosphor-icons/react";
 
-function GroupPortrait({id, groupName, groupPlace, groupRelatives }) {
+function GroupPortrait({id, groupName, groupPlace, groupRelatives, relation }) {
 
     // const relatives = [groupRelatives]
 
@@ -47,16 +47,32 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives }) {
             const randomY = centerY + randomDistance * Math.sin(randomAngle);
 
             const dotRadius = 8;
-            const dotColor = "#FEC016";
 
+            // Determine dot color based on relative's relation
+            let fillColor = "#201e1f"
+            switch (relative.relation) {
+                case "friends":
+                    fillColor = "#FEC016";
+                    break;
+                case "family":
+                    fillColor = "#41FA91";
+                    break;
+                case "study":
+                    fillColor = "#85A090";
+                    break;
+                case "neighbour":
+                    fillColor = "#ECF3DB";
+                    break;
+                default:
+                    fillColor = "#e0d7e0";
+            }
 
-
-        // draw dots for the relatives in the array
-        ctx.beginPath();
+            // draw dots for the relatives in the array
+            ctx.beginPath();
             ctx.arc(randomX, randomY, dotRadius, startAngle, endAngle);
-        ctx.fillStyle = dotColor;
-        ctx.fill();
-        ctx.closePath();
+            ctx.fillStyle = fillColor;
+            ctx.fill();
+            ctx.closePath();
         });
 
         // Anti aliasing
@@ -80,8 +96,6 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives }) {
                 {/*// IF GROUPPLACE*/}
                 <p><MapPin size={24} weight="light" /> {groupPlace}</p>
             </span>
-
-
 
 
         </div>

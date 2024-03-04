@@ -41,8 +41,6 @@ function AllCards() {
 
             <section  className="outer-content-container">
                 <div className="inner-content-container">
-                    <p> <Link to="/allrelatives">Go to your relatives</Link></p>
-
 
                     {cards.length > 0 && (
 
@@ -55,8 +53,6 @@ function AllCards() {
                                     cardName={card.cardName}
                                     designer={card.designer}
                                     category={card.category}
-                                    // image={card.imageData}
-
                                 />
 
                             })}

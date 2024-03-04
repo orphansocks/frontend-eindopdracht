@@ -46,7 +46,7 @@ function SingleRelative() {
 
             <section className="outer-content-container">
 
-                <div className="inner-content-container">
+                <div className="inner-content-container inner-content-container__text-restriction">
 
                     {/*<Button*/}
                     {/*    type="button"*/}

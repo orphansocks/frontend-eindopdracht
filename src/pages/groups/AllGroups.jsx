@@ -65,6 +65,7 @@ function AllGroups() {
                                     groupPlace={group.groupPlace}
                                     groupRelatives={group.relatives}
 
+
                                 />
 
                             })}
