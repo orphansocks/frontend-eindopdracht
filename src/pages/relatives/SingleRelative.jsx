@@ -15,7 +15,7 @@ function SingleRelative() {
     const navigate = useNavigate();
 
     // de parameter voor het ophalen van de juiste relative
-    const {id} = useParams()
+    const {id} = useParams();
 
     // de functie voor het ophalen van de data
     async function fetchRelativeById() {
@@ -33,7 +33,7 @@ function SingleRelative() {
     }
 
 
-    // useEffect om de relative by Id te laden on pageload
+    // useEffect om de relativeById te laden on pageload
     useEffect(() => {
         fetchRelativeById();
     }, []);
@@ -48,11 +48,6 @@ function SingleRelative() {
 
                 <div className="inner-content-container inner-content-container__text-restriction">
 
-                    {/*<Button*/}
-                    {/*    type="button"*/}
-                    {/*    onClick={ fetchRelativeById }*/}
-                    {/*    variant="primary">get {relative.firstName}</Button>*/}
-
                     {Object.keys(relative).length > 0 && (
                         <>
                             <h3>
@@ -64,6 +59,7 @@ function SingleRelative() {
                                 firstName={relative.firstName}
                                 socialStatus={relative.socialStatus}
                                 amountOfKids={relative.amountOfKids}
+                                relation={relative.relation}
                             />
                         </>
                     )}

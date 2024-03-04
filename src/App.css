@@ -21,7 +21,7 @@
     flex-basis: 1264px;
     flex-shrink: 1;
     flex-grow: 0;
-    background-color: var(--color-primary);
+    /*background-color: var(--color-primary);*/
     align-items: center;
     margin: 0 20px;
     padding: 16px 0;

@@ -40,13 +40,13 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives, relation }) {
         // Dot for relatives within the circle limits
         groupRelatives.forEach((relative) => {
             const randomAngle = Math.random() * Math.PI * 2;
-            const randomDistance = Math.random() * radius -12;
+            const randomDistance = Math.random() * radius -18;
 
             // Calculate dot coordinates within the circle
             const randomX = centerX + randomDistance * Math.cos(randomAngle);
             const randomY = centerY + randomDistance * Math.sin(randomAngle);
 
-            const dotRadius = 8;
+            const dotRadius = 12;
 
             // Determine dot color based on relative's relation
             let fillColor = "#201e1f"
@@ -55,16 +55,16 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives, relation }) {
                     fillColor = "#FEC016";
                     break;
                 case "family":
-                    fillColor = "#41FA91";
-                    break;
-                case "study":
                     fillColor = "#85A090";
                     break;
+                case "study":
+                    fillColor = "#AFBFC5";
+                    break;
                 case "neighbour":
-                    fillColor = "#ECF3DB";
+                    fillColor = "#C6C1B0";
                     break;
                 default:
-                    fillColor = "#e0d7e0";
+                    fillColor = "#C6B0B0";
             }
 
             // draw dots for the relatives in the array

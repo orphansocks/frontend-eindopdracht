@@ -39,7 +39,7 @@ function CardItem({id, cardName, designer, category}) {
                 <article className="card-item-container">
 
 
-                    <Link to={`/singleCard/${id}`}>
+                    <Link to={`/cards/${id}`}>
                         <img src={image} alt={`${cardName}`} className="card-image"/>
                     </Link>
 

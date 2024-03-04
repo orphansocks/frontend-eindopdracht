@@ -22,6 +22,7 @@ import AllGroups from './pages/groups/AllGroups';
 import SingleGroup from './pages/groups/SingleGroup';
 
 import AllCards from "./pages/cards/AllCards.jsx";
+import SingleCard from './pages/cards/SingleCard';
 
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -55,6 +56,7 @@ function App() {
                     <Route path="/groups/:id" element={<SingleGroup />} />
 
                     <Route path="/allcards" element={<AllCards />} />
+                    <Route path="/cards/:id" element={<SingleCard />} />
 
                     <Route path="*" element={<NotFoundPage />}/>
                 </Routes>

@@ -38,7 +38,7 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) 
                 fillColor = "#AFBFC5";
                 break;
             case "neighbour":
-                fillColor = "#ECF3DB";
+                fillColor = "#C6C1B0";
                 break;
             default:
                 fillColor = "#C6B0B0";
@@ -46,7 +46,7 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) 
 
         // Draw the arc/ half circle for the relation
         ctx.beginPath();
-        ctx.arc(centerX, centerY +10, radius + 10, startAngle, Math.PI, false);
+        ctx.arc(centerX, centerY, radius + 12, startAngle, Math.PI * 2, false);
         ctx.fillStyle = fillColor;
         ctx.fill();
         ctx.closePath();
@@ -99,17 +99,40 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) 
             ctx.ellipse(centerX +20, centerY, radiusX, radiusY, 0, startAngle, endAngle);
             ctx.strokeStyle = color;
             ctx.lineWidth = 1;
-            ctx.setLineDash([2, 2]);
+            ctx.setLineDash([3, 3]);
             ctx.stroke();
             ctx.closePath();
             ctx.restore();
         }
 
         // ellipse for amountofkids
-        if (amountOfKids === 1 || amountOfKids === 3  ) {
+        if (amountOfKids === 1 ) {
             ctx.save(); // Save the current transformation state
             ctx.beginPath();
-            ctx.ellipse(centerX, centerY, radiusY, radiusX, 0, startAngle, endAngle);
+            ctx.ellipse(centerX, centerY, radiusY, radiusX -20, 0, startAngle, endAngle);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 0;
+            ctx.stroke();
+            // ctx.fillStyle = "#C6B0B0";
+            // ctx.fill();
+            ctx.closePath();
+            ctx.restore(); // Restore the transformation state
+        }
+
+        // ellipse for amountofkids
+        if (amountOfKids === 2 || amountOfKids === 3  ) {
+            ctx.save(); // Save the current transformation state
+            ctx.beginPath();
+            ctx.ellipse(centerX , centerY -10, radiusY, radiusX -20, 0, startAngle, endAngle);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore(); // Restore the transformation state
+
+            ctx.save(); // Save the current transformation state
+            ctx.beginPath();
+            ctx.ellipse(centerX , centerY +10, radiusY, radiusX -20, 0, startAngle, endAngle);
             ctx.strokeStyle = color;
             ctx.lineWidth = 1;
             ctx.stroke();
@@ -118,22 +141,15 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) 
         }
 
         // ellipse for amountofkids
-        if (amountOfKids === 2) {
+        if ( amountOfKids === 3  ) {
             ctx.save(); // Save the current transformation state
             ctx.beginPath();
-            ctx.ellipse(centerX , centerY -10, radiusY, radiusX, 0, startAngle, endAngle);
+            ctx.ellipse(centerX, centerY, radiusY, radiusX -20, 0, startAngle, endAngle);
             ctx.strokeStyle = color;
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 0;
             ctx.stroke();
-            ctx.closePath();
-            ctx.restore(); // Restore the transformation state
-
-            ctx.save(); // Save the current transformation state
-            ctx.beginPath();
-            ctx.ellipse(centerX , centerY +10, radiusY, radiusX, 0, startAngle, endAngle);
-            ctx.strokeStyle = color;
-            ctx.lineWidth = 1;
-            ctx.stroke();
+            // ctx.fillStyle = "#C6B0B0";
+            // ctx.fill();
             ctx.closePath();
             ctx.restore(); // Restore the transformation state
         }
