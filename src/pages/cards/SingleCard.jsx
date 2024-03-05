@@ -5,6 +5,7 @@ import ErrorMessage from "../../components/errors/ErrorMessage.jsx";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import './Cards.css';
 import { PaperPlaneTilt } from "@phosphor-icons/react";
+import Button from "../../components/button/Button.jsx";
 
 function SingleCard() {
 
@@ -61,8 +62,6 @@ return (
 
                     {error && <ErrorMessage message="Something went wrong. Please try again." />}
 
-
-
                 </div>
 
                 <div className="single-card-container__text">
@@ -70,12 +69,16 @@ return (
                         <p>back to all cards</p>
                     </Link>
                     <h3>card {card.cardName}</h3>
-                    <p>designed by {card.designer}</p>
-                    <p>card category {card.category}</p>
+                    <h5>designed by: {card.designer}</h5>
+                    <h5>category: {card.category}</h5>
 
-                    <button onClick="openWhatsApp()"> <PaperPlaneTilt size={32} weight="light" />Open WhatsApp </button>
+                    <Button
+                        type="button"
+                        variant="primary"
+                        onClick="openWhatsApp()">
+                        Send
+                    </Button>
 
-                    <p><PaperPlaneTilt size={32} weight="light" /> send to</p>
 
                 </div>
 

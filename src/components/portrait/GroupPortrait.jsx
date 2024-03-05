@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import {Link} from "react-router-dom";
 import './Portrait.css';
-import { MapPin } from "@phosphor-icons/react";
 
 function GroupPortrait({id, groupName, groupPlace, groupRelatives, relation }) {
 
@@ -16,8 +15,8 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives, relation }) {
         const ctx = canvas.getContext('2d');
         const scaleFactor = window.devicePixelRatio;
 
-        canvas.width = 240 * scaleFactor;
-        canvas.height = 240 * scaleFactor;
+        canvas.width = 220 * scaleFactor;
+        canvas.height = 220 * scaleFactor;
         ctx.scale(scaleFactor, scaleFactor);
 
         const centerX = canvas.width / 2 / scaleFactor;
@@ -92,9 +91,9 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives, relation }) {
             {/*DEZE LINK ZIE JE ALLEEN OP DE OVERVIEW PAGINA*/}
             <span className="portrait-name">
 
-                <p><Link to={`/groups/${id}`}>{groupName}</Link></p>
+                <h4><Link to={`/groups/${id}`}>{groupName}</Link></h4>
                 {/*// IF GROUPPLACE*/}
-                <p><MapPin size={24} weight="light" /> {groupPlace}</p>
+                <h5>{groupPlace}</h5>
             </span>
 
 

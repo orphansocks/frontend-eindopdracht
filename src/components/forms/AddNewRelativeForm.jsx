@@ -116,8 +116,9 @@ function AddNewRelativeForm() {
                 <option value="">Select ...</option>
                 <option value="friends">Friends</option>
                 <option value="family">Family</option>
-                <option value="study">Study related</option>
+                <option value="fellow students">Study related</option>
                 <option value="neighbours">Neighbours</option>
+                <option value="colleagues">Colleagues</option>
                 <option value="other">Other</option>
             </select>
             {errors.status && <span>Choose an option</span>}

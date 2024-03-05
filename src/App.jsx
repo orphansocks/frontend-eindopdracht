@@ -18,6 +18,8 @@ import SingleRelative from './pages/relatives/SingleRelative';
 import NewRelative from './pages/relatives/NewRelative';
 import SearchRelative from './pages/relatives/SearchRelative';
 
+import Category from './pages/categories/Category.jsx';
+
 import AllGroups from './pages/groups/AllGroups';
 import SingleGroup from './pages/groups/SingleGroup';
 
@@ -51,6 +53,8 @@ function App() {
                     <Route path="/newrelative" element={<NewRelative />} />
                     <Route path="/searchrelative" element={<SearchRelative />} />
                     <Route path="/relatives/:id" element={<SingleRelative />} />
+
+                    <Route path="/categories/:relation" element={<Category />} />
 
                     <Route path="/allgroups" element={<AllGroups />} />
                     <Route path="/groups/:id" element={<SingleGroup />} />

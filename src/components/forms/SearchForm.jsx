@@ -65,7 +65,6 @@ function SearchForm() {
 
                 <div >
                     {searchResults.length > 0 && (
-
                         <ul className="portrait-items-list">
                             {searchResults.map((relative) => {
 

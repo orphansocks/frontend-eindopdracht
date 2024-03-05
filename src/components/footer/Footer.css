@@ -9,11 +9,12 @@
     background-color: var(--color-tertiary);
     color: var(--color-secondary);
     text-align: center;
-    margin-top: 60px;
+    margin: 30px;
     padding: 32px;
     font-weight: 400;
     bottom: 0;
-    width: 100%;
+    width: 95%;
+    border-radius: 30px;
 
 }
 

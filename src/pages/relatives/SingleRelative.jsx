@@ -51,7 +51,7 @@ function SingleRelative() {
                     {Object.keys(relative).length > 0 && (
                         <>
                             <h3>
-                                NAME {relative.firstName} {relative.lastName} NICKNAME {relative.nickName} BIRTHDAY {formatBirthday(relative.dob)} TOGETHER WITH {relative.nameOfPartner}, {relative.amountOfKids} KIDS: {relative.namesOfKids} MISC " {relative.misc} " OUR RELATION {relative.relation}
+                                NAME: {relative.firstName} {relative.lastName} NICKNAME: {relative.nickName} BIRTHDAY: {formatBirthday(relative.dob)} TOGETHER WITH: {relative.nameOfPartner} {relative.amountOfKids} KIDS: {relative.namesOfKids} MISC: " {relative.misc} " OUR RELATION: {relative.relation}
                             </h3>
                             <Portrait
                                 key={relative.id}
@@ -77,12 +77,22 @@ function SingleRelative() {
             <section className="outer-content-container">
                 <div className="inner-content-container">
                     <span>
-                    <Button type="button" variant="primary"
-                            onClick={() => navigate('/searchrelative')}>Change</Button>
-                    <Button type="button" variant="primary"
-                            onClick={() => navigate('/searchrelative')}>Delete</Button>
-                         <Button type="button" variant="primary"
-                                 onClick={() => navigate('/allcards')}>Send a card</Button>
+                    <Button type="button"
+                            variant="primary"
+                            onClick={() => navigate('/searchrelative')}>
+                        Change
+                    </Button>
+                    <Button type="button"
+                            variant="primary"
+                            onClick={() => navigate('/searchrelative')}>
+                            Delete
+                    </Button>
+                        <Button
+                            type="button"
+                            variant="primary"
+                            onClick={() => navigate('/allcards')}>
+                            Send a card
+                        </Button>
                 </span>
                 </div>
             </section>

@@ -1,6 +1,5 @@
 
 import SearchForm from "../../components/forms/SearchForm.jsx";
-import AllRelatives from "./AllRelatives.jsx";
 
 
 function SearchRelative() {

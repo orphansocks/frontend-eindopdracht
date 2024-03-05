@@ -34,19 +34,19 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) 
             case "family":
                 fillColor = "#85A090";
                 break;
-            case "study":
+            case "fellow students":
                 fillColor = "#AFBFC5";
                 break;
-            case "neighbour":
+            case "neighbours":
                 fillColor = "#C6C1B0";
                 break;
             default:
                 fillColor = "#C6B0B0";
         }
 
-        // Draw the arc/ half circle for the relation
+        // Draw the circle for the relation
         ctx.beginPath();
-        ctx.arc(centerX, centerY, radius + 12, startAngle, Math.PI * 2, false);
+        ctx.arc(centerX, centerY, radius + 14, startAngle, Math.PI * 2, false);
         ctx.fillStyle = fillColor;
         ctx.fill();
         ctx.closePath();
@@ -196,10 +196,14 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) 
             </canvas>
 
             {/*DEZE LINK ZIE JE ALLEEN OP DE OVERVIEW PAGINA*/}
-            <p className="portrait-name">
-
+            <span className="portrait-name">
+            <h4>
                 <Link to={`/relatives/${id}`}>{firstName}</Link>
-            </p>
+            </h4>
+            <h5>
+                <Link className="portrait-relation" to={`/categories/${relation}`}>{relation}</Link>
+            </h5>
+            </span>
 
 
 
