@@ -22,11 +22,14 @@ function NavBar() {
                 {/*REGISTER IS ALLEEN ZICHTBAAR ALS ISAUTH FALSE IS*/}
                 {/*LOGIN IS ALLEEN ZICHTBAAR ALS ISAUTH FALSE IS*/}
                 {/*LOGOUT IS ALLEEN ZICHTBAAR ALS LOGIN TRUE IS*/}
+                {/*YOUR ACCOUNT IS ALLEEN ZICHTBAAR ALS ROLE DESIGNER IS*/}
                 <div className="nav-item">
                 <ul className="main-navigation-links ">
+                    <li><Link to="/designers">your account</Link></li>
                     <li><Link to="/register">Register</Link></li>
                     <li><Link to="/login">Login</Link></li>
                     <li><Link to="/">Logout</Link></li>
+
                 </ul>
                 </div>
 

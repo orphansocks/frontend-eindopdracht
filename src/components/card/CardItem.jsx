@@ -1,15 +1,15 @@
-import degular from '../../assets/hbd_degular.png';
-import kepler from '../../assets/hbd_kepler.png';
-import roboto from '../../assets/hbd_roboto.png';
-import ivy from '../../assets/hbd_yvi.png';
-import haas from '../../assets/hbd_haas.png';
+import degular from '../../assets/card_degular.png';
+import kepler from '../../assets/card_kepler.png';
+import roboto from '../../assets/card_roboto.png';
+import ivy from '../../assets/card_yvi.png';
+import haas from '../../assets/card_haas.png';
 
 import './CardItem.css';
 import {Link} from "react-router-dom";
 import React from "react";
 
 
-function CardItem({id, cardName, designer, category}) {
+function CardItem({ id, cardName, designer, category }) {
 
     let image = ivy; // Default image
 
@@ -40,7 +40,7 @@ function CardItem({id, cardName, designer, category}) {
 
 
                     <Link to={`/cards/${id}`}>
-                        <img src={image} alt={`${cardName}`} className="card-image"/>
+                        <img id="imageToShare" src={image} alt={`${cardName}`} className="card-image"/>
                     </Link>
 
                 </article>

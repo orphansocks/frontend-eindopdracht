@@ -9,3 +9,11 @@
     column-gap: 16px;
 
 }
+
+.sub {
+    /*font-size: 0.9em;*/
+    font-weight: 200;
+    text-transform: uppercase;
+
+}
+

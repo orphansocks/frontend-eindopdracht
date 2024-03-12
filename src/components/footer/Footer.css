@@ -10,11 +10,11 @@
     color: var(--color-secondary);
     text-align: center;
     margin: 30px;
-    padding: 32px;
+    padding: 16px 64px;
     font-weight: 400;
     bottom: 0;
     width: 95%;
-    border-radius: 30px;
+    border-radius: 64px;
 
 }
 

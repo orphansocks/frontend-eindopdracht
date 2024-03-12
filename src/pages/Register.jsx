@@ -14,7 +14,7 @@ function Register() {
             <section  className="outer-content-container">
 
                 <div className="inner-content-container">
-                    <p>Wanneer je nog geen account hebt, registreer je hier or whatever</p>
+                    <p>Register here, or <Link to="/login">login</Link> </p>
 
                     <RegisterForm />
 

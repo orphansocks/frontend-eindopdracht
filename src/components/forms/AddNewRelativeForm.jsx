@@ -107,7 +107,7 @@ function AddNewRelativeForm() {
             {errors.amountOfKids && <span>This field is NOT required</span>}
 
             <label>Name(s) of kid(s)</label>
-            <input type="text" placeholder="name(s separated by a comma)" {...register("namesOfKids", { required: false })} />
+            <input type="text" placeholder="(name(s) separated  as you like)" {...register("namesOfKids", { required: false })} />
             {errors.name && <span>This field is NOT required</span>}
 
             <label>Our relation *</label>

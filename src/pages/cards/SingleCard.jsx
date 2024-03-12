@@ -45,6 +45,7 @@ return (
         <section className="outer-content-container">
 
             <div className="inner-content-container single-card-container">
+
                 <div className="single-card-container__card">
 
                     {Object.keys(card).length > 0 && (
@@ -54,7 +55,7 @@ return (
                                 key={card.id}
                                 id={card.id}
                                 cardName={card.cardName}
-                                designer={card.designer}
+                                designer={card.designedBy}
                                 category={card.category}
                             />
                         </>
@@ -69,14 +70,14 @@ return (
                         <p>back to all cards</p>
                     </Link>
                     <h3>card {card.cardName}</h3>
-                    <h5>designed by: {card.designer}</h5>
+                    <h5>designed by: {card.designedBy}</h5>
                     <h5>category: {card.category}</h5>
 
                     <Button
                         type="button"
                         variant="primary"
-                        onClick="openWhatsApp()">
-                        Send
+                        onClick="shareImageOnWhatsApp()"
+                    >Send
                     </Button>
 
 
