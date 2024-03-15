@@ -1,0 +1,10 @@
+.account-container {
+    flex-basis: 450px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    align-items: flex-start;
+    margin: 0 20px;
+    padding: 32px;
+    background-color: var(--color-tertiary);
+    border-radius: 30px;
+}

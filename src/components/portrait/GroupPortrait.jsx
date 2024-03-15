@@ -1,9 +1,8 @@
 import React, {useEffect} from "react";
 import {Link} from "react-router-dom";
 import './Portrait.css';
-import { MapPin } from "@phosphor-icons/react";
 
-function GroupPortrait({id, groupName, groupPlace, groupRelatives }) {
+function GroupPortrait({id, groupName, groupPlace, groupRelatives, relation }) {
 
     // const relatives = [groupRelatives]
 
@@ -16,8 +15,8 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives }) {
         const ctx = canvas.getContext('2d');
         const scaleFactor = window.devicePixelRatio;
 
-        canvas.width = 240 * scaleFactor;
-        canvas.height = 240 * scaleFactor;
+        canvas.width = 220 * scaleFactor;
+        canvas.height = 220 * scaleFactor;
         ctx.scale(scaleFactor, scaleFactor);
 
         const centerX = canvas.width / 2 / scaleFactor;
@@ -40,23 +39,39 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives }) {
         // Dot for relatives within the circle limits
         groupRelatives.forEach((relative) => {
             const randomAngle = Math.random() * Math.PI * 2;
-            const randomDistance = Math.random() * radius -12;
+            const randomDistance = Math.random() * radius -18;
 
             // Calculate dot coordinates within the circle
             const randomX = centerX + randomDistance * Math.cos(randomAngle);
             const randomY = centerY + randomDistance * Math.sin(randomAngle);
 
-            const dotRadius = 8;
-            const dotColor = "#FEC016";
+            const dotRadius = 12;
 
+            // Determine dot color based on relative's relation
+            let fillColor = "#201e1f"
+            switch (relative.relation) {
+                case "friends":
+                    fillColor = "#FEC016";
+                    break;
+                case "family":
+                    fillColor = "#85A090";
+                    break;
+                case "study":
+                    fillColor = "#AFBFC5";
+                    break;
+                case "neighbour":
+                    fillColor = "#C6C1B0";
+                    break;
+                default:
+                    fillColor = "#C6B0B0";
+            }
 
-
-        // draw dots for the relatives in the array
-        ctx.beginPath();
+            // draw dots for the relatives in the array
+            ctx.beginPath();
             ctx.arc(randomX, randomY, dotRadius, startAngle, endAngle);
-        ctx.fillStyle = dotColor;
-        ctx.fill();
-        ctx.closePath();
+            ctx.fillStyle = fillColor;
+            ctx.fill();
+            ctx.closePath();
         });
 
         // Anti aliasing
@@ -76,12 +91,10 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives }) {
             {/*DEZE LINK ZIE JE ALLEEN OP DE OVERVIEW PAGINA*/}
             <span className="portrait-name">
 
-                <p><Link to={`/groups/${id}`}>{groupName}</Link></p>
+                <h4><Link to={`/groups/${id}`}>{groupName}</Link></h4>
                 {/*// IF GROUPPLACE*/}
-                <p><MapPin size={24} weight="light" /> {groupPlace}</p>
+                <h5>{groupPlace}</h5>
             </span>
-
-
 
 
         </div>

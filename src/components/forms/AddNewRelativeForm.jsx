@@ -5,7 +5,8 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
 function AddNewRelativeForm() {
-    const { register,
+    const {
+        register,
         handleSubmit,
         formState: { errors } } = useForm();
 
@@ -107,7 +108,7 @@ function AddNewRelativeForm() {
             {errors.amountOfKids && <span>This field is NOT required</span>}
 
             <label>Name(s) of kid(s)</label>
-            <input type="text" placeholder="name(s separated by a comma)" {...register("namesOfKids", { required: false })} />
+            <input type="text" placeholder="(name(s) separated  as you like)" {...register("namesOfKids", { required: false })} />
             {errors.name && <span>This field is NOT required</span>}
 
             <label>Our relation *</label>
@@ -116,8 +117,9 @@ function AddNewRelativeForm() {
                 <option value="">Select ...</option>
                 <option value="friends">Friends</option>
                 <option value="family">Family</option>
-                <option value="study">Study related</option>
+                <option value="fellow students">Study related</option>
                 <option value="neighbours">Neighbours</option>
+                <option value="colleagues">Colleagues</option>
                 <option value="other">Other</option>
             </select>
             {errors.status && <span>Choose an option</span>}

@@ -1,4 +1,4 @@
-.portrait-items-list {
+.relation-items-list {
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -7,13 +7,4 @@
     align-content: flex-start;
     row-gap: 16px;
     column-gap: 16px;
-
 }
-
-.sub {
-    /*font-size: 0.9em;*/
-    font-weight: 200;
-    text-transform: uppercase;
-
-}
-

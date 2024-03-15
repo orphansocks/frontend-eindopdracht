@@ -15,7 +15,7 @@ function SingleRelative() {
     const navigate = useNavigate();
 
     // de parameter voor het ophalen van de juiste relative
-    const {id} = useParams()
+    const {id} = useParams();
 
     // de functie voor het ophalen van de data
     async function fetchRelativeById() {
@@ -33,7 +33,7 @@ function SingleRelative() {
     }
 
 
-    // useEffect om de relative by Id te laden on pageload
+    // useEffect om de relativeById te laden on pageload
     useEffect(() => {
         fetchRelativeById();
     }, []);
@@ -42,28 +42,76 @@ function SingleRelative() {
 
         <>
 
-            <h1 className="page-title">{relative.firstName} ({calculateAge(relative.dob)})</h1>
+            <h1 className="page-title">{relative.firstName}
+                {relative.dob && (
+                    <>
+                ({calculateAge(relative.dob)})
+                    </>
+                )}
+            </h1>
 
             <section className="outer-content-container">
 
-                <div className="inner-content-container">
-
-                    {/*<Button*/}
-                    {/*    type="button"*/}
-                    {/*    onClick={ fetchRelativeById }*/}
-                    {/*    variant="primary">get {relative.firstName}</Button>*/}
+                <div className="inner-content-container inner-content-container__text-restriction">
 
                     {Object.keys(relative).length > 0 && (
                         <>
-                            <h3>
-                                NAME {relative.firstName} {relative.lastName} NICKNAME {relative.nickName} BIRTHDAY {formatBirthday(relative.dob)} TOGETHER WITH {relative.nameOfPartner}, {relative.amountOfKids} KIDS: {relative.namesOfKids} MISC " {relative.misc} " OUR RELATION {relative.relation}
-                            </h3>
+
+
+                        <h3>
+                            <span className="sub">(Name)</span> {relative.firstName} {relative.lastName}
+
+                            {relative.nickName && (
+                                <>
+                            <span className="sub"> (Nickname) </span> {relative.nickName}
+                                </>
+                            )}
+
+                            {relative.dob && (
+                                <>
+                            <span className="sub"> (Birthday) </span> {formatBirthday(relative.dob)}
+                                </>
+                            )}
+
+                            {relative.nameOfPartner && (
+                                <>
+                            <span className="sub"> (Together with) </span> {relative.nameOfPartner}
+                                </>
+                            )}
+
+                            {relative.amountOfKids > 0  && (
+                                <>
+                                <span className="sub"> (Amount of Kids) </span> {relative.amountOfKids}
+                                </>
+                            )}
+
+                            {relative.amountOfKids > 0  && relative.namesOfKids && (
+                                <>
+                                <span className="sub"> (And their names) </span> {relative.namesOfKids}
+                                </>
+                            )}
+
+                            {relative.misc && (
+                                <>
+                            <span className="sub"> (Misc) </span> "{relative.misc}"
+                                </>
+                            )}
+
+                            {relative.relation && (
+                                <>
+                            <span className="sub"> (Our relation) </span> {relative.relation}
+                                </>
+                            )}
+                        </h3>
+
+
                             <Portrait
                                 key={relative.id}
                                 id={relative.id}
                                 firstName={relative.firstName}
                                 socialStatus={relative.socialStatus}
                                 amountOfKids={relative.amountOfKids}
+                                relation={relative.relation}
                             />
                         </>
                     )}
@@ -81,12 +129,22 @@ function SingleRelative() {
             <section className="outer-content-container">
                 <div className="inner-content-container">
                     <span>
-                    <Button type="button" variant="primary"
-                            onClick={() => navigate('/searchrelative')}>Change</Button>
-                    <Button type="button" variant="primary"
-                            onClick={() => navigate('/searchrelative')}>Delete</Button>
-                         <Button type="button" variant="primary"
-                                 onClick={() => navigate('/allcards')}>Send a card</Button>
+                    <Button type="button"
+                            variant="primary"
+                            onClick={() => navigate('/searchrelative')}>
+                        Change
+                    </Button>
+                    <Button type="button"
+                            variant="primary"
+                            onClick={() => navigate('/searchrelative')}>
+                            Delete
+                    </Button>
+                        <Button
+                            type="button"
+                            variant="primary"
+                            onClick={() => navigate('/allcards')}>
+                            Send a card
+                        </Button>
                 </span>
                 </div>
             </section>

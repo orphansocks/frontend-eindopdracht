@@ -18,10 +18,15 @@ import SingleRelative from './pages/relatives/SingleRelative';
 import NewRelative from './pages/relatives/NewRelative';
 import SearchRelative from './pages/relatives/SearchRelative';
 
+import Category from './pages/categories/Category.jsx';
+
 import AllGroups from './pages/groups/AllGroups';
 import SingleGroup from './pages/groups/SingleGroup';
 
 import AllCards from "./pages/cards/AllCards.jsx";
+import SingleCard from './pages/cards/SingleCard';
+
+import Designer from './pages/designers/Designer';
 
 import NotFoundPage from './pages/NotFoundPage';
 
@@ -41,6 +46,9 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
 
+                    {/*<Route path="/designer" element={isAuth ? <Designer /> : <Navigate*/}
+                    {/* to="/login"/>} />*/}
+
                     <Route path="/register" element={<Register />} />
                     <Route path="/apply" element={<Apply />} />
                     <Route path="/login" element={<Login />} />
@@ -51,10 +59,15 @@ function App() {
                     <Route path="/searchrelative" element={<SearchRelative />} />
                     <Route path="/relatives/:id" element={<SingleRelative />} />
 
+                    <Route path="/categories/:relation" element={<Category />} />
+
                     <Route path="/allgroups" element={<AllGroups />} />
                     <Route path="/groups/:id" element={<SingleGroup />} />
 
                     <Route path="/allcards" element={<AllCards />} />
+                    <Route path="/cards/:id" element={<SingleCard />} />
+
+                    <Route path="/designers/:id" element={<Designer />} />
 
                     <Route path="*" element={<NotFoundPage />}/>
                 </Routes>

@@ -16,21 +16,24 @@ const RegisterForm = () => {
         const [loading, toggleLoading] = useState(false);
         const navigate = useNavigate();
 
-        // canceltoken
-        const source = axios.CancelToken.source();
+        // state voor de canceltoken
+        const [source, setSource] = useState(null);
 
         useEffect(() => {
-            return function cleanup() {
-                source.cancel("component unmounted");
-            }
-        }, []);
+        const cancelToken = axios.CancelToken.source();
+        setSource(cancelToken);
+
+        return () => {
+            cancelToken.cancel('component unmounted');
+        };
+    }, []);
 
         async function onSubmit(data) {
             console.log(data);
             toggleLoading(true);
 
             try {
-                await axios.post('http://localhost:8080/register', {
+                await axios.post('http://localhost:8080/users', {
                     username: data.username,
                     password: data.password,
                     email: data.email
@@ -50,20 +53,20 @@ const RegisterForm = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
 
                 <div>
-                    <label>Gebruikersnaam</label>
+                    <label>Username</label>
                     <input
                         type="text"
                         {...register("username", {
-                            required: 'Gebruikersnaam is verplicht'
+                            required: 'Username is required'
                         })} />
                     {errors.username && <span>{errors.username.message}</span>}
                 </div>
 
                 <div>
-                    <label>E-mailadres</label>
+                    <label>E-mail address</label>
                     <input type="email"
                            {...register('email', {
-                               required: 'E-mail is verplicht',
+                               required: 'E-mail is required',
                                pattern: {
                                    value: /^\S+@\S+$/,
                                    message: 'Invalid email address'
@@ -73,7 +76,7 @@ const RegisterForm = () => {
                 </div>
 
                 <div>
-                    <label>Kies een Password</label>
+                    <label>Password</label>
                     <input type="password"
                            {...register('password', {
                                required: 'Password is required',

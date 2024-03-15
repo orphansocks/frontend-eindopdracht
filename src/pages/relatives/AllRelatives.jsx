@@ -17,11 +17,12 @@ function AllRelatives() {
 
         try {
             const response = await axios.get('http://localhost:8080/relatives');
+
             console.log(response.data);
-
-
             setRelatives(response.data);
+
         } catch (e) {
+
             console.error(e);
             toggleError(true);
         }

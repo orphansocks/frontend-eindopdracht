@@ -6,6 +6,7 @@
     align-items: center;
     margin: 0;
     padding: 0;
+    border-radius: 30px;
 }
 
     canvas {
@@ -16,3 +17,7 @@
     .portrait-name {
         text-align: center;
     }
+
+.portrait-relation {
+    font-weight: 300;
+}
