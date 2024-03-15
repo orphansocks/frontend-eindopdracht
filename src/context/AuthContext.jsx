@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
+import isTokenValid from "../helpers/isTokenValid.jsx";
 
 export const AuthContext = createContext( {} );
 
@@ -9,71 +10,81 @@ function AuthContextProvider( { children } ) {
 
     const [ auth, setAuth ] = useState( {
         isAuth: false,
-        user: null,
+        user: {},
         status: 'pending',
     } );
 
+    const navigate = useNavigate();
 
-    // MOUNTING EFFECT
-    // IS ER EEN TOKEN? HAAL DE TOKEN OP
-    // IS DIE TOKEN NOG GELDIG? (HELPER ISTOKENVALID MAKEN
-    // TOKEN > LOGIN
-    // GEEN TOKEN OF ONGELDIG > DE STATE BLIJFT LEEG
+
+    // use effect voor het mounting effect
+    // haal de token uit de local storage
+    // is de token nog geldig (istokenvalid!)
+    // haal dan de userdata op met de decodedToken
+    // is de token ongeldig dan blijft de state leeg
 
     useEffect( () => {
 
         const token = localStorage.getItem( 'token' );
 
-        if ( token ) {
-            // const isvalid = isTokenValid( token );
-            const decoded = jwtDecode( token );
-            void login( decoded.sub, token );
+        if ( token && isTokenValid(token) ) {
+            login(token);
+
         } else {
+
             setAuth( {
                 isAuth: false,
                 user: null,
                 status: 'done',
             });
+
         }
     }, [] );
 
-    const navigate = useNavigate();
+    function login( token ) {
 
-    async function login( id, token ) {
+        localStorage.setItem('token', token);
 
-        localStorage.setItem( 'token', token );
-        const decodedToken = jwtDecode( token );
+        const decodedToken = jwtDecode(token);
         console.log(decodedToken.sub);
 
+        void fetchUserData( token );
+
+        navigate('/');
+    }
+
+    async function fetchUserData( token ) {
+
         try {
-            const response = await axios.get( `http://localhost:3000/600/users/${id}`, {
+            const response = await axios.get(`http://localhost:8080/authenticated`, {
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${ token }`,
+                    Authorization: `Bearer ${token}`,
                 },
-            });
 
-     //SETAUTH IS EEN DATA OBJECT ZET DE GEGEVENS VAN DE USER IN DE STATE
-            setAuth( {
+            });
+            console.log(response);
+
+            // zet de gegevens in de state
+
+            setAuth({
                 isAuth: true,
                 user: {
                     username: response.data.username,
-                    email: response.data.email,
+                    // email: response.data.email,
                     id: response.data.id,
                 },
                 status: 'done',
             });
 
         } catch (e) {
-            console.error( e );
-         logout();
+            console.error(e);
+
+          logout();
+        }
     }
 
-        console.log('gebruiker is ingelogd');
-        navigate('/allrelatives');
-    }
-
-    const logout = () => {
+    function logout()  {
 
         localStorage.removeItem('token');
         // localStorage.clear();
@@ -82,17 +93,19 @@ function AuthContextProvider( { children } ) {
             isAuth: false,
             user: null,
             status: 'done',
-        } );
+        });
 
-        console.log( 'Gebruiker is uitgelogd' );
+        console.log( 'User is logged out' );
         navigate( '/' );
     }
 
 
     const contextData = {
 
-        logout: logout,
         isAuth: auth.isAuth,
+        login: login,
+        logout: logout,
+
     };
 
     return (

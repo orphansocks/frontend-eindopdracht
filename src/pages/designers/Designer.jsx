@@ -7,6 +7,7 @@ import {useParams} from "react-router-dom";
 import AccountItem from "../../components/designer/AccountItem.jsx";
 
 import './Designer.css';
+import UploadCardForm from "../../components/forms/uploadCardForm.jsx";
 
 function Designer() {
 
@@ -76,6 +77,8 @@ function Designer() {
                     <div className="account-container">
                         <h3>Your downloads</h3>
 
+
+
                     </div>
 
                 </section>
@@ -92,6 +95,7 @@ function Designer() {
             <section className="outer-content-container">
                 <div className="inner-content-container">
                     <h2>Upload a new card</h2>
+                    <UploadCardForm />
                 </div>
             </section>
 

@@ -29,7 +29,7 @@ const LoginForm = () => {
     // useEffect om side effects af te handelen
     useEffect(() => {
         return function cleanup() {
-            source.cancel();
+            source.cancel("component unmounted");
         }
     }, []);
 
@@ -39,29 +39,37 @@ const LoginForm = () => {
         console.log(data);
 
         try {
-            await axios.post('http://localhost:8080/login', {
+            toggleLoading(true);
+            const response = await axios.post('http://localhost:8080/authenticate', {
                 username: data.username,
-                password: data.password
+                password: data.password,
             }, {
                 cancelToken: source.token,
             });
-            console.log(result.data);
+            console.log(response.data);
 
             // geef de JWT token aan de login mee
-            login(result.data.accessToken);
+            const { jwt } = response.data;
+
+            // pass de token naar de login functie
+            login(jwt);
+
+
+
+            // vang de error op
         } catch (e) {
             console.error(e);
-        }
+        } toggleLoading(false);
     }
 
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div>
-                <label>Gebruikersnaam</label>
+                <label>Username</label>
                 <input type="text"
                        {...register('username', {
-                           required: 'Gebruikersnaam is verplicht'
+                           required: 'Username is required'
                        })} />
                 {errors.username && <span>{errors.username.message}</span>}
             </div>
@@ -70,11 +78,11 @@ const LoginForm = () => {
                 <label>Password</label>
                 <input type="password"
                        {...register('password', {
-                           required: 'Password is verplicht'
+                           required: 'Password is required'
                        })} />
                 {errors.password && <span>{errors.password.message}</span>}
             </div>
-            {errors.username && errors.password && <p>Combinatie van emailadres en wachtwoord is onjuist</p>}
+            {errors.username && errors.password && <p>Combination of email address and password is incorrect</p>}
 
             <button
                 type="submit"

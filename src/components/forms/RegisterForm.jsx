@@ -16,21 +16,24 @@ const RegisterForm = () => {
         const [loading, toggleLoading] = useState(false);
         const navigate = useNavigate();
 
-        // canceltoken
-        const source = axios.CancelToken.source();
+        // state voor de canceltoken
+        const [source, setSource] = useState(null);
 
         useEffect(() => {
-            return function cleanup() {
-                source.cancel("component unmounted");
-            }
-        }, []);
+        const cancelToken = axios.CancelToken.source();
+        setSource(cancelToken);
+
+        return () => {
+            cancelToken.cancel('component unmounted');
+        };
+    }, []);
 
         async function onSubmit(data) {
             console.log(data);
             toggleLoading(true);
 
             try {
-                await axios.post('http://localhost:8080/register', {
+                await axios.post('http://localhost:8080/users', {
                     username: data.username,
                     password: data.password,
                     email: data.email

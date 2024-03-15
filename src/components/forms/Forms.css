@@ -15,6 +15,7 @@ form label {
 }
 
 input {
+    z-index: 10;
     width: 420px;
     padding: 16px 32px;
     margin: 4px 0 12px 0;
@@ -24,6 +25,12 @@ input {
 }
 
 select {
+    z-index: 0;
+    border-right: 32px solid transparent;
+}
+
+select {
+    z-index: 10;
     width: 420px;
     padding: 16px 32px;
     margin: 4px 0 12px 0;
@@ -31,6 +38,9 @@ select {
     border: 1px solid var(--color-black);
     background-color:  var(--color-white);
 }
+
+
+
 
 textarea {
     width: 420px;

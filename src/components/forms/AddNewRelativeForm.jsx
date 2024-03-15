@@ -5,7 +5,8 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
 function AddNewRelativeForm() {
-    const { register,
+    const {
+        register,
         handleSubmit,
         formState: { errors } } = useForm();
 
