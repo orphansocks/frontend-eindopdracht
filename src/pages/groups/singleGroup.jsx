@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import ErrorMessage from "../../components/errors/ErrorMessage.jsx";
 import './Groups.css';
+import LinkBar from "../../components/linkbar/LinkBar.jsx";
 
 function SingleGroup() {
 
@@ -39,12 +40,11 @@ function SingleGroup() {
 
         <>
             <h1 className="page-title">{group.groupName}</h1>
+            <LinkBar
+                linkTo="/allgroups"
+                linkText="back to all groups"
+            />
 
-<section className="outer-content-container">
-    <Link to="/allgroups" className="inner-content-container back-link">
-        Back to all groups
-    </Link>
-</section>
             <section className="outer-content-container">
                 <div className="inner-content-container">
 

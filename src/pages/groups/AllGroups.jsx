@@ -1,9 +1,9 @@
-import {Link} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import ErrorMessage from "../../components/errors/ErrorMessage.jsx";
 import axios from "axios";
 import '../groups/Groups.css';
 import GroupPortrait from "../../components/portrait/GroupPortrait.jsx";
+import LinkBar from "../../components/linkbar/LinkBar.jsx";
 
 function AllGroups() {
 
@@ -37,21 +37,14 @@ function AllGroups() {
         <>
 
             <h1 className="page-title">All groups</h1>
+            <LinkBar
+                linkTo="/newgroup"
+                linkText="create group"
+            />
 
             <section  className="outer-content-container">
 
                 <div className="inner-content-container">
-
-                    <p> If your groups are not showing, please make sure you have groups</p>
-                    <p> or <Link to="/login">login</Link> or <Link to="/register">register</Link> first</p>
-                    <p>  <Link to="/register">create group</Link></p>
-
-
-                    {/*<Button type="button"*/}
-                    {/*        onClick={ fetchRelatives }*/}
-                    {/*        variant="primary">Get all relatives</Button>*/}
-
-
 
                     {groups.length > 0 && (
 

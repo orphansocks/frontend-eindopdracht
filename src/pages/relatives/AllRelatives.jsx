@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react";
 import ErrorMessage from "../../components/errors/ErrorMessage.jsx";
 import axios from "axios";
 import './Relatives.css';
+import LinkBar from "../../components/linkbar/LinkBar.jsx";
 
 function AllRelatives() {
 
@@ -38,19 +39,14 @@ function AllRelatives() {
         <>
 
             <h1 className="page-title">All relatives</h1>
+            <LinkBar
+                linkTo="/allgroups"
+                linkText="go to your groups"
+            />
 
             <section  className="outer-content-container">
 
                 <div className="inner-content-container">
-
-                    <p> If your relatives are not showing, please <Link to="/login">login</Link> or <Link to="/register">register</Link> first</p>
-                    <p> <Link to="/allgroups">Go to your groups</Link></p>
-
-
-                    {/*<Button type="button"*/}
-                    {/*        onClick={ fetchRelatives }*/}
-                    {/*        variant="primary">Get all relatives</Button>*/}
-
 
 
                     {relatives.length > 0 && (

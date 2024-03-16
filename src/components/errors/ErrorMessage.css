@@ -1,6 +1,6 @@
 .error-message {
     color: var(--color-highlight);
-    padding: 8px 16px;
+    padding: 12px 24px;
     margin-top: 16px;
     border: 1px dashed var(--color-highlight);
     border-radius: 50px;

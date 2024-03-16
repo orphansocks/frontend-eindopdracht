@@ -54,9 +54,6 @@ const LoginForm = () => {
             // pass de token naar de login functie
             login(jwt);
 
-
-
-            // vang de error op
         } catch (e) {
             console.error(e);
         } toggleLoading(false);

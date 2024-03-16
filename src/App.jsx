@@ -29,6 +29,7 @@ import SingleCard from './pages/cards/SingleCard';
 import Designer from './pages/designers/Designer';
 
 import NotFoundPage from './pages/NotFoundPage';
+import NewGroup from "./pages/groups/NewGroup.jsx";
 
 
 
@@ -63,6 +64,7 @@ function App() {
 
                     <Route path="/allgroups" element={<AllGroups />} />
                     <Route path="/groups/:id" element={<SingleGroup />} />
+                    <Route path="/newgroup" element={<NewGroup />} />
 
                     <Route path="/allcards" element={<AllCards />} />
                     <Route path="/cards/:id" element={<SingleCard />} />

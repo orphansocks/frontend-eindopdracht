@@ -57,7 +57,7 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives, relation }) {
                     fillColor = "#85A090";
                     break;
                 case "study":
-                    fillColor = "#AFBFC5";
+                    fillColor = "#B8C2C8";
                     break;
                 case "neighbour":
                     fillColor = "#C6C1B0";

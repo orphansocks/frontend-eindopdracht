@@ -1,4 +1,3 @@
-import {Link} from "react-router-dom";
 import AddNewRelativeForm from "../../components/forms/AddNewRelativeForm.jsx";
 
 function NewRelative() {

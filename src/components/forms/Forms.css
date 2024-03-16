@@ -57,3 +57,25 @@ select:focus,
 input:focus {
     outline: 0 solid var(--color-black);
 }
+
+.checkbox-container {
+    width: 240px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; /* Align items vertically in the center */
+    margin-bottom: 4px; /* Optional: Add some margin between each checkbox */
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 50px;
+    margin-left: 12px; /* Optional: Add some spacing between the checkbox and the text */
+}
+
+.check-selected {
+    color: blue; /* Example background color for selected relatives */
+}
+
+

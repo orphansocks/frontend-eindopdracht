@@ -1,6 +1,7 @@
 import {Link, useNavigate, useParams} from "react-router-dom";
 import Button from "../../components/button/Button.jsx";
 import Portrait from "../../components/portrait/Portrait.jsx";
+import LinkBar from "../../components/linkbar/LinkBar.jsx";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import ErrorMessage from "../../components/errors/ErrorMessage.jsx";
@@ -49,6 +50,11 @@ function SingleRelative() {
                     </>
                 )}
             </h1>
+
+            <LinkBar
+                linkTo="/allrelatives"
+                linkText="back to all relatives"
+            />
 
             <section className="outer-content-container">
 
@@ -149,15 +155,6 @@ function SingleRelative() {
                 </div>
             </section>
 
-            <section className="outer-content-container">
-            <div className="inner-content-container">
-                     <span>
-                    <Link to="/allrelatives" className="back-link">
-                        <p>Back to all relatives</p>
-                    </Link>
-                        </span>
-            </div>
-            </section>
 
 
         </>

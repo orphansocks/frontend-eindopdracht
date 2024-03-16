@@ -35,7 +35,7 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) 
                 fillColor = "#85A090";
                 break;
             case "fellow students":
-                fillColor = "#AFBFC5";
+                fillColor = "#B8C2C8";
                 break;
             case "neighbours":
                 fillColor = "#C6C1B0";
