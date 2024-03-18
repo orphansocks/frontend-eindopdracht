@@ -55,16 +55,16 @@ function uploadCardForm() {
 
         <form onSubmit={handleSubmit(onSubmit)}>
 
-            <label>Card name</label>
+            <label>Card name*</label>
             <input type="text" {...register("cardName", { required: true })} />
             {errors.cardName && <span>This field is required</span>}
 
-            {/*AUTOMATISCH INVULLEN?!*/}
+
             <label>Your Id</label>
             <input type="text" defaultValue={initialDesignerId} readOnly {...register("designerId", { required: true })} />
             {errors.designerId && <span>This field is required</span>}
 
-            <label>Category</label>
+            <label>Category*</label>
             <select
                 {...register("category", { required: true })} >
                 <option value="">Select ...</option>
@@ -73,7 +73,7 @@ function uploadCardForm() {
                 <option value="Birth">Birth</option>
                 <option value="Other">Other</option>
             </select>
-            {errors.status && <span>Choose an option</span>}
+            {errors.category && <span>This field is required, choose an option</span>}
 
             <label>Upload image</label>
             <input
@@ -81,6 +81,7 @@ function uploadCardForm() {
                 accept="image/*"
                 {...register('imageData', { required: true })}
             />
+            {errors.imageDate && <span>This field is required, choose a file</span>}
 
             <button
                 type="submit"

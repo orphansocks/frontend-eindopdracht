@@ -21,3 +21,8 @@
 .portrait-relation {
     font-weight: 300;
 }
+
+.birthday h4 a {
+    text-decoration-style: wavy;
+    color: var(--color-highlight);
+}

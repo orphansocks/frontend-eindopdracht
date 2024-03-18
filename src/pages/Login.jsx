@@ -20,7 +20,9 @@ function Login() {
 
 
 
-                    <p>Not having an account yet? Please register <Link to="/register">here</Link></p>
+                    <p>Not having an account yet? Please register <Link to="/register">here.</Link></p>
+                    <p>Oops, I forgot my password. You can <a href="mailto:youremail@example.com">email us</a> to reset it.</p>
+
 
                 </div>
 

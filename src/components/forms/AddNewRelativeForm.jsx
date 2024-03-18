@@ -58,6 +58,16 @@ function AddNewRelativeForm() {
         toggleLoading(false);
     }
 
+    const validateDOB = (value) => {
+        const selectedDate = new Date(value);
+        const currentDate = new Date();
+
+        if (selectedDate > currentDate) {
+            return "Date of birth cannot be in the future";
+        }
+
+        return true;
+    };
 
 
     return (
@@ -65,7 +75,7 @@ function AddNewRelativeForm() {
 
             <label>First name</label>
             <input type="text" {...register("firstName", { required: true })} />
-            {errors.firstName && <span>This field is required</span>}
+            {errors.firstName && <span className="error-message">This field is required</span>}
 
             <label>Last name</label>
             <input type="text" {...register("lastName", { required: false })} />
@@ -76,8 +86,8 @@ function AddNewRelativeForm() {
             {errors.nickName && <span>This field is NOT required</span>}
 
             <label>Date of birth</label>
-            <input type="date" id="dob" {...register('dob', { required: false })} />
-            {errors.dob && <span>This field is NOT required</span>}
+            <input type="date" id="dob" {...register('dob', { required: false, validate: validateDOB })} />
+            {errors.dob && <span>Date of birth cannot be in the future</span>}
 
             <label>Social status *</label>
             <select
@@ -89,7 +99,7 @@ function AddNewRelativeForm() {
                 <option value="divorced">Divorced</option>
                 <option value="other">Other</option>
             </select>
-            {errors.status && <span>Choose an option</span>}
+            {errors.socialStatus && <span className="error-message">Choose an option</span>}
 
             <label>Name of Partner</label>
             <input type="text" {...register("nameOfPartner", { required: false })} />
@@ -109,7 +119,7 @@ function AddNewRelativeForm() {
 
             <label>Name(s) of kid(s)</label>
             <input type="text" placeholder="(name(s) separated  as you like)" {...register("namesOfKids", { required: false })} />
-            {errors.name && <span>This field is NOT required</span>}
+            {errors.namesOfKids && <span>This field is NOT required</span>}
 
             <label>Our relation *</label>
             <select
@@ -122,15 +132,11 @@ function AddNewRelativeForm() {
                 <option value="colleagues">Colleagues</option>
                 <option value="other">Other</option>
             </select>
-            {errors.status && <span>Choose an option</span>}
-
-            {/*<label>Email</label>*/}
-            {/*<input type="text" {...register("email", { required: false })} />*/}
-            {/*{errors.email && <span>This field is required</span>}*/}
+            {errors.relation && <span className="error-message">Choose an option</span>}
 
             <label>Miscellaneous</label>
             <textarea {...register("misc", {required: false})} placeholder="..." />
-            {errors.name && <span>This field is NOT required</span>}
+            {errors.misc && <span>This field is NOT required</span>}
 
 
             <button

@@ -9,7 +9,7 @@ function Footer() {
 
         <footer className="outer-content-container sticky-footer">
             <div>
-                <h4>we are all relatives</h4>
+                <h4>we are all related</h4>
             </div>
 
             <div className="copyright">

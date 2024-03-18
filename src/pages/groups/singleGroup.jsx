@@ -5,6 +5,7 @@ import axios from "axios";
 import ErrorMessage from "../../components/errors/ErrorMessage.jsx";
 import './Groups.css';
 import LinkBar from "../../components/linkbar/LinkBar.jsx";
+import Button from "../../components/button/Button.jsx";
 
 function SingleGroup() {
 
@@ -67,6 +68,25 @@ function SingleGroup() {
                 {error && <ErrorMessage message="Something went wrong. Please try again." />}
                 </div>
             </section>
+
+            <section className="outer-content-container">
+                <div className="inner-content-container">
+                    <span>
+                    <Button type="button"
+                            variant="primary"
+                            onClick={() => navigate('/searchrelative')}>
+                        Change group
+                    </Button>
+                    <Button type="button"
+                            variant="primary"
+                            onClick={() => navigate('/searchrelative')}>
+                            Delete group
+                    </Button>
+                </span>
+                </div>
+            </section>
+
+
 
         </>
 

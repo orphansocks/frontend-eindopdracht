@@ -4,9 +4,6 @@ import './Portrait.css';
 
 function GroupPortrait({id, groupName, groupPlace, groupRelatives, relation }) {
 
-    // const relatives = [groupRelatives]
-
-
     // useeffect voor het effect
 
     useEffect(() => {

@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import './Forms.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import allRelatives from "../../pages/relatives/AllRelatives.jsx";
 
 function AddNewGroupForm() {
     const {
@@ -12,14 +13,14 @@ function AddNewGroupForm() {
     } = useForm();
 
     const [loading, toggleLoading] = useState(false);
-    const [relatives, setRelatives] = useState([]); // State to store relatives data
-    const [selectedRelatives, setSelectedRelatives] = useState([]); // State to store selected relatives
+    const [relatives, setRelatives] = useState([]);
+    const [selectedRelatives, setSelectedRelatives] = useState([]);
 
     const navigate = useNavigate();
     const source = axios.CancelToken.source();
 
     useEffect(() => {
-        // Fetch relatives data
+
         const fetchRelatives = async () => {
             try {
                 const response = await axios.get('http://localhost:8080/relatives');
@@ -29,7 +30,7 @@ function AddNewGroupForm() {
             }
         };
 
-        fetchRelatives(); // Call fetchRelatives on component mount
+        fetchRelatives();
 
         return () => {
             source.cancel();
@@ -46,6 +47,12 @@ function AddNewGroupForm() {
     };
 
     async function onSubmit(data) {
+
+        if (selectedRelatives.length === 0) {
+            alert("Please select at least one relative");
+            return;
+        }
+
         toggleLoading(true);
         try {
             await axios.post(
@@ -53,7 +60,7 @@ function AddNewGroupForm() {
                 {
                     groupName: data.groupName,
                     groupPlace: data.groupPlace,
-                    relatives: selectedRelatives // Pass selected relatives to the backend
+                    relativeIds: selectedRelatives
                 },
                 {
                     cancelToken: source.token
@@ -68,6 +75,7 @@ function AddNewGroupForm() {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
+
             <label>Group name</label>
             <input type="text" {...register('groupName', { required: true })} />
             {errors.groupName && <span className="error-message">This field is required</span>}
@@ -77,7 +85,7 @@ function AddNewGroupForm() {
             {errors.groupPlace && <span className="error-message">This field is required</span>}
 
             <div>
-                <p>Selected Relatives:</p>
+                <p>Selected Relatives</p>
                 {selectedRelatives.map(relId => {
                     const relative = relatives.find(rel => rel.id === relId);
                     return <div className="check-selected" key={relId}>{relative.firstName}</div>;
@@ -85,7 +93,7 @@ function AddNewGroupForm() {
             </div>
 
             <div>
-                <p>Select Relatives:</p>
+                <p>Select Relatives</p>
                 {relatives.map(relative => (
 
                     <div key={relative.id} className="checkbox-container">
@@ -93,12 +101,14 @@ function AddNewGroupForm() {
                         <input
                             type="checkbox"
                             id={`relative-${relative.id}`}
+                            {...register('selectedRelatives')}
                             value={relative.id}
                             onChange={handleCheckboxChange}
                             checked={selectedRelatives.includes(relative.id)}
                         />
                     </div>
                 ))}
+                {errors.selectedRelatives && <p>Please select at least one relative</p>}
             </div>
 
             <button type="submit" className="form-button" disabled={loading}>

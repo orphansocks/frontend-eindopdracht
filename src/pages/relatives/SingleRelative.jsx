@@ -138,12 +138,12 @@ function SingleRelative() {
                     <Button type="button"
                             variant="primary"
                             onClick={() => navigate('/searchrelative')}>
-                        Change
+                        Change relative
                     </Button>
                     <Button type="button"
                             variant="primary"
                             onClick={() => navigate('/searchrelative')}>
-                            Delete
+                            Delete relative
                     </Button>
                         <Button
                             type="button"

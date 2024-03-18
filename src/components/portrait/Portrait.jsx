@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import './Portrait.css';
 import {Link} from "react-router-dom";
+import birthdayChecker from "../../helpers/birthdayChecker.js";
 
-function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) {
-
-
+function Portrait({id, color, firstName, socialStatus, amountOfKids, relation, dob}) {
+    const isBirthday = birthdayChecker(dob);
 
     // useeffect voor wat er gebeurd
 
@@ -195,8 +195,7 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) 
 
             </canvas>
 
-            {/*DEZE LINK ZIE JE ALLEEN OP DE OVERVIEW PAGINA*/}
-            <span className="portrait-name">
+            <span className={`portrait-name ${isBirthday ? 'birthday' : ''}`}>
             <h4>
                 <Link to={`/relatives/${id}`}>{firstName}</Link>
             </h4>
