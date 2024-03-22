@@ -8,11 +8,12 @@ import AccountItem from "../../components/designer/AccountItem.jsx";
 
 import './Designer.css';
 import UploadCardForm from "../../components/forms/uploadCardForm.jsx";
+import CardItem from "../../components/card/CardItem.jsx";
 
 function Designer() {
 
     // state voor de functionaliteit
-    const [designer, setDesigner] = useState([]);
+    const [designer, setDesigner] = useState({});
     const [error, toggleError] = useState(false);
     const { user } = useContext(AuthContext);
 
@@ -87,6 +88,20 @@ function Designer() {
             <section className="outer-content-container">
                 <div className="inner-content-container">
                     <h2>Your cards</h2>
+
+                    {designer.cardDto && designer.cardDto.length > 0 && (
+                        <ul className="card-items-list">
+                            {designer.cardDto.map((card) => (
+                                <CardItem
+                                    key={card.id}
+                                    id={card.id}
+                                    cardName={card.cardName}
+                                    designer={card.designer}
+                                    category={card.category}
+                                />
+                            ))}
+                        </ul>
+                    )}
 
                 </div>
             </section>

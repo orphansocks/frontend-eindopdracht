@@ -4,8 +4,9 @@ import {useContext} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
 
 function NavBar() {
+
+    const { auth, logout } = useContext(AuthContext);
     const navigate = useNavigate();
-    const { isAuth, logout } = useContext(AuthContext);
 
     return (
         <nav className="outer-content-container main-navigation">

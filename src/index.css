@@ -5,13 +5,13 @@
 
 
 :root {
-  --color-primary: #B8C2C8;
+  --color-primary:  #FCFCF5;
   --color-secondary: #201e1f;
-  --color-tertiary: #ECF3DB;
+  --color-tertiary: #ECECEC;
   --color-highlight: #FF3A20;
   --color-white: #FCFCF5;
   --color-relative: #FFB833;
-  --color-black: #201e1f;
+  --color-black: #FF3A20;
 }
 
 * {
@@ -82,7 +82,7 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: var(--color-highlight);
+  color: var(--color-primary);
 }
 
 
@@ -106,13 +106,13 @@ figcaption {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--color-black);
+    background-color: var(--color-primary);
   }
   a:hover {
-    color: var(--color-highlight);
+    color: var(--color-primary);
   }
   button {
-    background-color: #f9f9f9;
+  background-color: var(--color-black);
   }
 }

@@ -2,10 +2,10 @@
     flex-basis: 240px;
     flex-shrink: 1;
     flex-grow: 0;
-    background-color: var(--color-tertiary);
     align-items: center;
     margin: 0;
     padding: 0;
+    background-color: var(--color-tertiary);
     border-radius: 30px;
 }
 
@@ -22,7 +22,4 @@
     font-weight: 300;
 }
 
-.birthday h4 a {
-    text-decoration-style: wavy;
-    color: var(--color-highlight);
-}
+

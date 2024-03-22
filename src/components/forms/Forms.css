@@ -63,19 +63,19 @@ input:focus {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center; /* Align items vertically in the center */
-    margin-bottom: 4px; /* Optional: Add some margin between each checkbox */
+    align-items: center;
+    margin-bottom: 4px;
     flex-grow: 1;
     flex-shrink: 0;
 }
 
 .checkbox-container input[type="checkbox"] {
     width: 50px;
-    margin-left: 12px; /* Optional: Add some spacing between the checkbox and the text */
+    margin-left: 12px;
 }
 
 .check-selected {
-    color: blue; /* Example background color for selected relatives */
+    color: blue;
 }
 
 

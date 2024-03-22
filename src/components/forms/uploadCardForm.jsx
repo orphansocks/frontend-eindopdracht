@@ -10,7 +10,7 @@ function uploadCardForm() {
         handleSubmit,
         formState: { errors } } = useForm();
 
-    const initialDesignerId = "4040";
+    const initialDesignerId = "4001";
 
     // state voor de functionaliteit
     const [loading, toggleLoading] = useState(false);
@@ -19,12 +19,12 @@ function uploadCardForm() {
     const navigate = useNavigate();
 
     // canceltoken voor het netwerkrequest
-    const source = axios.CancelToken.source();
+    // const source = axios.CancelToken.source();
 
     // useeffect voor het afbreken
     useEffect(() => {
         return function cleanup() {
-            source.cancel();
+            // source.cancel();
         }
     }, []);
 
@@ -39,11 +39,10 @@ function uploadCardForm() {
                 cardName: data.cardName,
                 designerId: data.designerId,
                category: data.category,
-                imageId: data.imageId,
+                file: data.file,
+                // imageId: data.imageId,
 
-            }, {
-                cancelToken: source.token,
-            });
+            }, );
         } catch (e) {
             console.error(e);
         }
@@ -79,9 +78,9 @@ function uploadCardForm() {
             <input
                 type="file"
                 accept="image/*"
-                {...register('imageData', { required: true })}
+                {...register('file', { required: true })}
             />
-            {errors.imageDate && <span>This field is required, choose a file</span>}
+            {errors.file && <span>This field is required, choose a file</span>}
 
             <button
                 type="submit"

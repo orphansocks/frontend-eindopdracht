@@ -27,8 +27,10 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives, relation }) {
             ctx.save();// Save the current transformation state
             ctx.beginPath();
             ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-            ctx.lineWidth = 1;
-            ctx.stroke();
+            // ctx.lineWidth = 1;
+            // ctx.stroke();
+            ctx.fillStyle = "#FCFCF5";
+            ctx.fill();
             ctx.closePath();
             ctx.restore(); // Restore the transformation state
     }

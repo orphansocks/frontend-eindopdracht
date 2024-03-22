@@ -43,9 +43,7 @@ const LoginForm = () => {
             const response = await axios.post('http://localhost:8080/authenticate', {
                 username: data.username,
                 password: data.password,
-            }, {
-                cancelToken: source.token,
-            });
+            }, );
             console.log(response.data);
 
             // geef de JWT token aan de login mee

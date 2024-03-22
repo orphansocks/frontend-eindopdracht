@@ -9,7 +9,7 @@ import {Link} from "react-router-dom";
 import React from "react";
 
 
-function CardItem({ id, cardName, designer, category }) {
+function CardItem({ id, cardName, designedBy, category }) {
 
     let image = ivy; // Default image
 
