@@ -9,6 +9,7 @@ import AccountItem from "../../components/designer/AccountItem.jsx";
 import './Designer.css';
 import UploadCardForm from "../../components/forms/uploadCardForm.jsx";
 import CardItem from "../../components/card/CardItem.jsx";
+import DesignerCardItem from "../../components/designer/DesignerCardItem.jsx";
 
 function Designer() {
 
@@ -45,14 +46,21 @@ function Designer() {
         fetchDesignerById();
     }, []);
 
+    // Calculate total amount of downloads
+    const totalDownloads = designer.cardDto
+        ? designer.cardDto.reduce((total, card) => total + card.amountOfDownloads, 0)
+        : 0;
+
+
 
     return (
         <>
             <h1 className="page-title">Account</h1>
 
                 <section className="outer-content-container">
+                    <div className="inner-content-container account-container">
 
-                    <div className="account-container">
+                    <div className="account-field">
 
                         {Object.keys(designer).length > 0 && (
                             <>
@@ -75,10 +83,10 @@ function Designer() {
 
                     </div>
 
-                    <div className="account-container">
+                    <div className="account-field">
                         <h3>Your downloads</h3>
-
-
+                        <h1 className="total-downloads">{totalDownloads}</h1>
+                    </div>
 
                     </div>
 
@@ -92,12 +100,12 @@ function Designer() {
                     {designer.cardDto && designer.cardDto.length > 0 && (
                         <ul className="card-items-list">
                             {designer.cardDto.map((card) => (
-                                <CardItem
+                                <DesignerCardItem
                                     key={card.id}
                                     id={card.id}
                                     cardName={card.cardName}
-                                    designer={card.designer}
                                     category={card.category}
+                                    amountOfDownloads={card.amountOfDownloads}
                                 />
                             ))}
                         </ul>
@@ -110,7 +118,8 @@ function Designer() {
             <section className="outer-content-container">
                 <div className="inner-content-container">
                     <h2>Upload a new card</h2>
-                    <UploadCardForm />
+                    <UploadCardForm
+                    />
                 </div>
             </section>
 
