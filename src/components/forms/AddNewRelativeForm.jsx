@@ -47,9 +47,7 @@ function AddNewRelativeForm() {
                 misc: data.misc,
                 relation: data.relation
 
-            }, {
-                cancelToken: source.token,
-            });
+            }, );
             navigate("/allrelatives");
 
         } catch (e) {

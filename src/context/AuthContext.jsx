@@ -48,12 +48,20 @@ function AuthContextProvider( { children } ) {
         const decodedToken = jwtDecode(token);
         console.log(decodedToken.sub);
 
-        void fetchUserData( token );
+        // geef de id en de token door aan de fetchUserData functie
+        void fetchUserData( decodedToken.sub, token );
 
-        navigate('/');
+        // navigate('/allrelatives');
+        if (auth.user.role === 'ROLE_USER') {
+            navigate('/allrelatives');
+        } else if (auth.user.role === 'ROLE_DESIGNER') {
+            // navigate(`/designers/${auth.user.id}`);
+            navigate(`/designers/4001`);
+        }
+
     }
 
-    async function fetchUserData( token ) {
+    async function fetchUserData( id, token ) {
 
         try {
             const response = await axios.get(`http://localhost:8080/authenticated`, {
@@ -71,8 +79,9 @@ function AuthContextProvider( { children } ) {
                 isAuth: true,
                 user: {
                     username: response.data.username,
-                    // email: response.data.email,
+                    // email: response.data.email, heb ik verder nog niet nodig
                     id: response.data.id,
+                    role: response.data.authorities[0].authority,
                 },
                 status: 'done',
             });

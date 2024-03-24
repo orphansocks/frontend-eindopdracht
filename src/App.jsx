@@ -38,7 +38,7 @@ import NewGroup from "./pages/groups/NewGroup.jsx";
 
 function App() {
 
-    const { isAuth } = useContext(AuthContext);
+    const { auth } = useContext(AuthContext);
 
     return (
         <div className="App">
@@ -47,14 +47,14 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
 
-                    {/*<Route path="/designer" element={isAuth ? <Designer /> : <Navigate*/}
-                    {/* to="/login"/>} />*/}
+                    {/*<Route path="/designer" element={ auth ? <Designer /> : <Navigate to="/login"/>} />*/}
 
                     <Route path="/register" element={<Register />} />
                     <Route path="/apply" element={<Apply />} />
                     <Route path="/login" element={<Login />} />
 
-                    {/*<Route path="/allrelatives" element={isAuth ? <AllRelatives /> : <Navigate to="/login"/>} />*/}
+                    {/*<Route path="/allrelatives" element={ auth ? <AllRelatives /> : <Navigate
+                     to="/login"/>} />*/}
                     <Route path="/allrelatives" element={<AllRelatives />} />
                     <Route path="/newrelative" element={<NewRelative />} />
                     <Route path="/searchrelative" element={<SearchRelative />} />

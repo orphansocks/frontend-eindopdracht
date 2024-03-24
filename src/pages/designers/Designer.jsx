@@ -8,43 +8,50 @@ import AccountItem from "../../components/designer/AccountItem.jsx";
 
 import './Designer.css';
 import UploadCardForm from "../../components/forms/uploadCardForm.jsx";
-import CardItem from "../../components/card/CardItem.jsx";
 import DesignerCardItem from "../../components/designer/DesignerCardItem.jsx";
 
 function Designer() {
 
     // state voor de functionaliteit
-    const [designer, setDesigner] = useState({});
+    const [designer, setDesigner] = useState([]);
     const [error, toggleError] = useState(false);
     const { user } = useContext(AuthContext);
 
-    // de parameter voor het ophalen van de juiste relative
+    // Use user ID from AuthContext
+    // const userId = user?.id; // Safely access user id
+
+    // de parameter voor het ophalen van de juiste designer
     const {id} = useParams();
 
-    //useeffect voor het juist ingelogd zijn
-    // useEffect(() => {
-    //     const source = axios.CancelToken.source();
+    // async function voor het ophalen van de designerdata
+    async function fetchDesignerById() {
+        toggleError(false);
 
-        // async function voor het ophalen van de designerdata
-        async function fetchDesignerById() {
-            toggleError(false);
+        try {
+            const response = await axios.get(`http://localhost:8080/designers/${id}`);
 
-            try {
-                const response = await axios.get(`http://localhost:8080/designers/${id}`);
+            console.log(response.data);
+            setDesigner(response.data);
 
-                console.log(response.data);
-                setDesigner(response.data);
-
-            } catch (e) {
-                console.error(e);
-                toggleError(true);
-            }
+        } catch (e) {
+            console.error(e);
+            toggleError(true);
         }
+    }
 
-    // useEffect om de designerdata te laden on pageload
+    // useEffect to load designer data on component mount
+    // useEffect(() => {
+    //     fetchDesignerById(userId);
+    // }, [userId]); // Execute useEffect whenever userId changes
+
     useEffect(() => {
-        fetchDesignerById();
+        // Check if userId is defined
+            fetchDesignerById();
+
     }, []);
+
+
+
 
     // Calculate total amount of downloads
     const totalDownloads = designer.cardDto
