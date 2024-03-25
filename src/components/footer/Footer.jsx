@@ -8,12 +8,14 @@ function Footer() {
     return (
 
         <footer className="outer-content-container sticky-footer">
-            <div>
-                <h4>we are all related</h4>
+            <div className="footer-quote">
+                <h4>Relative only becomes meaningful in a certain context</h4>
             </div>
 
-            <div className="copyright">
-                <p>relatives &copy; Eva van Dongen - 2024 - eindopdracht Full Stack Development Bootcamp @ NOVI Hogeschool</p>
+            <div className="footer-copyright">
+                <p>relatives &copy; Eva van Dongen - 2024 - eindopdracht Full Stack Development Bootcamp @ <a href="https://www.novi.nl/full-stack-developer/" target="_blank">NOVI Hogeschool</a></p>
+
+
             </div>
 
         </footer>

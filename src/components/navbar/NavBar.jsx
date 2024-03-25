@@ -5,7 +5,7 @@ import {AuthContext} from "../../context/AuthContext.jsx";
 
 function NavBar() {
 
-    const { isAuth, logout, role } = useContext(AuthContext);
+    const { isAuth, logout, user } = useContext(AuthContext);
     const navigate = useNavigate();
 
     return (
@@ -28,20 +28,18 @@ function NavBar() {
 
                 </div>
 
-
-                {/*REGISTER IS ALLEEN ZICHTBAAR ALS ISAUTH FALSE IS*/}
-                {/*LOGIN IS ALLEEN ZICHTBAAR ALS ISAUTH FALSE IS*/}
-                {/*LOGOUT IS ALLEEN ZICHTBAAR ALS LOGIN TRUE IS*/}
-                {/*YOUR ACCOUNT IS ALLEEN ZICHTBAAR ALS ROLE DESIGNER IS*/}
                 <div className="nav-item">
 
                     <ul className="main-navigation-links">
 
                         {isAuth ? (
                             <>
-                                <li><Link to="/designers/4001">Your Account</Link></li>
+                                { user && user.role === 'ROLE_DESIGNER' && (
+                                    <li><Link to="/designers/4001">Your Account</Link></li>
+                                    // het is me een raadsel waarom de text Your Account niet verschijnt wanneer een ROLE_DESIGNER is ingelogd?
+                                    // <li><Link to={`/designers/${user.id}`}>Your Account</Link></li>
+                                )}
                                 <li><Link to="/" onClick={logout}>Logout</Link></li>
-
                             </>
                         ) : (
                             <>

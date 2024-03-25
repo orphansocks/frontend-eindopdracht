@@ -52,7 +52,6 @@ function AllRelatives() {
 
                 <div className="inner-content-container">
 
-
                     {relatives.length > 0 && (
 
                         <ul className="portrait-items-list">

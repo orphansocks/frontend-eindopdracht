@@ -18,13 +18,11 @@ function uploadCardForm() {
     // navigate voor het navigeren na invullen
     const navigate = useNavigate();
 
-    // canceltoken voor het netwerkrequest
-    // const source = axios.CancelToken.source();
 
     // useeffect voor het afbreken
     useEffect(() => {
-        return function cleanup() {
-            // source.cancel();
+        return () => {
+            //cleanup
         }
     }, []);
 
@@ -34,15 +32,21 @@ function uploadCardForm() {
         toggleLoading(true);
 
         try {
-            await axios.post('http://localhost:8080/cards', {
+            const formData = new FormData();
+            formData.append('cardName', data.cardName);
+            formData.append('designerId', data.designerId);
+            formData.append('category', data.category);
+            formData.append('file', data.file[0]); // single file upload
 
-                cardName: data.cardName,
-                designerId: data.designerId,
-               category: data.category,
-                file: data.file,
-                // imageId: data.imageId,
+            await axios.post('http://localhost:8080/cards', formData, {
 
-            }, );
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+
+            // Redirect or do something upon successful upload
+            navigate('/designers/4001');
         } catch (e) {
             console.error(e);
         }

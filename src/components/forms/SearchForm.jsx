@@ -10,6 +10,7 @@ function SearchForm() {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [error, toggleError] = useState(false);
+    const [searched, setSearched] = useState(false)
 
 
    // de functie voor het ophalen van de zoekdata
@@ -24,6 +25,7 @@ function SearchForm() {
 
             setSearchResults(response.data);
             setSearchQuery('');
+            setSearched(true);
         } catch (e) {
             console.error(e);
             toggleError(true);
@@ -35,12 +37,7 @@ function SearchForm() {
     const handleSearchChange = (event) => {
         const value = event.target.value;
         setSearchQuery(value);
-
-        // const filteredResults = searchResult.filter(item =>
-        //     item.toLowerCase().includes(value.toLowerCase())
-        // );
-        //
-        // setSearchResult(filteredResults);
+        setSearched(false);
     };
 
     return (
@@ -61,6 +58,10 @@ function SearchForm() {
             {error && <ErrorMessage message="Something went wrong. Please try again." />}
 
             </form>
+
+            {searched && searchResults.length === 0 && (
+                <h4>Sorry, no relatives found</h4>
+            )}
 
 
                 <div >

@@ -177,16 +177,17 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids, relation, d
 
     return (
         <div className="portrait-container">
+            <div className="data-container">
             <canvas
                 id={id}
                 width="150"
                 height="150">
             </canvas>
+                </div>
 
             <span className="portrait-name">
             <h4>
                 <Link to={`/relatives/${id}`}>{isBirthday ? `${firstName}*` : firstName  }</Link>
-
             </h4>
             <h5>
                 <Link className="portrait-relation" to={`/categories/${relation}`}>{relation}</Link>
