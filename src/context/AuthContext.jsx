@@ -16,7 +16,6 @@ function AuthContextProvider( { children } ) {
 
     const navigate = useNavigate();
 
-
     // use effect voor het mounting effect
     // haal de token uit de local storage
     // is de token nog geldig (istokenvalid!)
@@ -70,7 +69,7 @@ function AuthContextProvider( { children } ) {
                 setAuth({
                     isAuth: true,
                     user: {
-                        username: response.data.username,
+                        username: response.data.principal.username,
                         id: response.data.id,
                         role: userRole,
                     },
@@ -84,6 +83,8 @@ function AuthContextProvider( { children } ) {
                 } else if (userRole === 'ROLE_DESIGNER') {
                     navigate('/designers/4001');
                     // navigate(`/designers/${response.data.id}`);
+                } else if (userRole === 'ROLE_ADMIN') {
+                    navigate('/');
                 }
             } else {
                 // Handle case where user doesn't have any roles

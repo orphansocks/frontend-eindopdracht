@@ -41,7 +41,7 @@ function NavBar() {
 
                         {auth.isAuth ? (
                             <>
-                                { auth.user && auth.user.role === 'ROLE_DESIGNER' && (
+                                {auth.user && (auth.user.role === 'ROLE_DESIGNER' || auth.user.role === 'ROLE_ADMIN') && (
                                     <li><Link to="/designers/4001">Your Account</Link></li>
                                 )}
                                 <li><Link to="/" onClick={logout}>Logout</Link></li>
