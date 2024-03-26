@@ -10,7 +10,7 @@ function LinkBar({ linkTo, linkText }) {
     const loginMessage = () => {
         return (
             <p>
-                If your content is not showing, please
+                if your content is not showing, please
                 <Link to="/login"> login</Link> or
                 <Link to="/register"> register</Link> first
             </p>

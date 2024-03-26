@@ -53,45 +53,6 @@ function AuthContextProvider( { children } ) {
 
     }
 
-    // async function fetchUserData( id, token ) {
-    //
-    //     try {
-    //         const response = await axios.get(`http://localhost:8080/authenticated`, {
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 Authorization: `Bearer ${token}`,
-    //             },
-    //
-    //         });
-    //         console.log(response);
-    //
-    //         // zet de gegevens in de state
-    //
-    //         setAuth({
-    //             isAuth: true,
-    //             user: {
-    //                 username: response.data.username,
-    //                 // email: response.data.email, heb ik verder nog niet nodig
-    //                 id: response.data.id,
-    //                 role: response.data.authorities[0].authority,
-    //             },
-    //             status: 'done',
-    //         });
-    //
-    //         // check the role and navigate:
-    //         if (response.data.authorities[0].authority === 'ROLE_USER') {
-    //             navigate('/allrelatives');
-    //         } else if (response.data.authorities[0].authority === 'ROLE_DESIGNER') {
-    //             navigate(`/designers/4001`);
-    //             // navigate(`/designers/${response.data.id}`);
-    //         }
-    //
-    //     } catch (e) {
-    //         console.error(e);
-    //       logout();
-    //     }
-    // }
-
     async function fetchUserData(id, token) {
         try {
             const response = await axios.get(`http://localhost:8080/authenticated`, {
@@ -103,8 +64,9 @@ function AuthContextProvider( { children } ) {
 
             console.log(response);
 
+
             if (response.data.authorities && response.data.authorities.length > 0) {
-                const userRole = response.data.authorities[0].authority; // Assuming the first authority represents the user's role
+                const userRole = response.data.authorities[0].authority;
                 setAuth({
                     isAuth: true,
                     user: {
@@ -114,6 +76,7 @@ function AuthContextProvider( { children } ) {
                     },
                     status: 'done',
                 });
+                console.log(userRole)
 
                 // Navigate based on the user's role
                 if (userRole === 'ROLE_USER') {
@@ -153,7 +116,7 @@ function AuthContextProvider( { children } ) {
 
     const contextData = {
 
-        isAuth: auth.isAuth,
+        auth: auth,
         login: login,
         logout: logout,
 

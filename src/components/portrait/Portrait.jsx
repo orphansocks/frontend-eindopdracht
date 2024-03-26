@@ -186,7 +186,7 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids, relation, d
                 </div>
 
             <span className="portrait-name">
-            <h4>
+            <h4 className="name-input">
                 <Link to={`/relatives/${id}`}>{isBirthday ? `${firstName}*` : firstName  }</Link>
             </h4>
             <h5>

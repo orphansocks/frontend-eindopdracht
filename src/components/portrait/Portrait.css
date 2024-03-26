@@ -29,4 +29,7 @@
     font-weight: 300;
 }
 
+.name-input {
+    text-transform: capitalize;
+}
 
