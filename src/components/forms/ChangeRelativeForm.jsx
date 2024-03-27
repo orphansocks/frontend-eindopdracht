@@ -4,7 +4,7 @@ import './Forms.css';
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
-function AddNewRelativeForm() {
+function ChangeRelativeForm() {
     const {
         register,
         handleSubmit,
@@ -140,7 +140,7 @@ function AddNewRelativeForm() {
             <button
                 type="submit"
                 className="form-button"
-            disabled={loading}>
+                disabled={loading}>
 
                 Submit</button>
         </form>
@@ -148,4 +148,4 @@ function AddNewRelativeForm() {
 }
 
 
-export default AddNewRelativeForm;
+export default ChangeRelativeForm;

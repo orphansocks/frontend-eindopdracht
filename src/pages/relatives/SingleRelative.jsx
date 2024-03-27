@@ -1,4 +1,4 @@
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import Button from "../../components/button/Button.jsx";
 import Portrait from "../../components/portrait/Portrait.jsx";
 import LinkBar from "../../components/linkbar/LinkBar.jsx";
@@ -7,16 +7,21 @@ import axios from "axios";
 import ErrorMessage from "../../components/errors/ErrorMessage.jsx";
 import calculateAge from "../../helpers/calculateAge.js";
 import formatBirthday from "../../helpers/formatBirthday.js";
+import ChangeRelativeForm from "../../components/forms/ChangeRelativeForm.jsx";
 
 function SingleRelative() {
 
     // state voor de functionaliteit
     const [relative, setRelative] = useState([]);
     const [error, toggleError] = useState(false);
+    const [loading, toggleLoading] = useState(false);
+    const [showChangeRelative, setShowChangeRelative] = useState(false);
+
+
     const navigate = useNavigate();
 
     // de parameter voor het ophalen van de juiste relative
-    const {id} = useParams();
+    const { id} = useParams();
 
     // de functie voor het ophalen van de data
     async function fetchRelativeById() {
@@ -32,6 +37,24 @@ function SingleRelative() {
             toggleError(true);
         }
     }
+
+    // de functie om de relative te verwijderen
+    async function deleteRelativeById(id) {
+        toggleError(false);
+
+        try {
+            await axios.delete(`http://localhost:8080/relatives/${id}`);
+            navigate('/allrelatives');
+        } catch (e) {
+            console.error(e);
+            toggleError(true);
+        }
+    }
+
+    // function to handle the changerelative button click
+    const changeRelative = () => {
+        setShowChangeRelative(true);
+    };
 
 
     // useEffect om de relativeById te laden on pageload
@@ -126,8 +149,6 @@ function SingleRelative() {
 
 
 
-
-
                 </div>
 
             </section>
@@ -137,12 +158,12 @@ function SingleRelative() {
                     <span>
                     <Button type="button"
                             variant="primary"
-                            onClick={() => navigate('/searchrelative')}>
+                            onClick={changeRelative}>
                         Change relative
                     </Button>
                     <Button type="button"
                             variant="primary"
-                            onClick={() => navigate('/searchrelative')}>
+                            onClick={() => deleteRelativeById(id)}>
                             Delete relative
                     </Button>
                         <Button
@@ -155,7 +176,19 @@ function SingleRelative() {
                 </div>
             </section>
 
+            {showChangeRelative && (
 
+            <section className="outer-content-container">
+                <div className="inner-content-container">
+                    <h2>change relative</h2>
+
+                    <ChangeRelativeForm
+                        relative={relative} />
+
+                </div>
+
+            </section>
+                )}
 
         </>
 

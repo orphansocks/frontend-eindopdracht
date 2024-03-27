@@ -36,6 +36,7 @@ import NewGroup from "./pages/groups/NewGroup.jsx";
 
 
 
+
 function App() {
 
     const { auth } = useContext(AuthContext);
