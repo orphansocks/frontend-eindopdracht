@@ -56,6 +56,11 @@ function SingleRelative() {
         setShowChangeRelative(true);
     };
 
+    const updateRelativeData = async () => {
+        await fetchRelativeById(); // Fetch updated data after submission
+        setShowChangeRelative(false); // Hide the form after submission
+    };
+
 
     // useEffect om de relativeById te laden on pageload
     useEffect(() => {
@@ -182,8 +187,8 @@ function SingleRelative() {
                 <div className="inner-content-container">
                     <h2>change relative</h2>
 
-                    <ChangeRelativeForm
-                        relative={relative} />
+                    <ChangeRelativeForm relative={relative} updateRelativeData={ updateRelativeData } />
+
 
                 </div>
 
