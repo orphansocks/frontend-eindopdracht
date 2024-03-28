@@ -75,6 +75,7 @@ function SearchForm() {
                                     firstName={relative.firstName}
                                     socialStatus={relative.socialStatus}
                                     amountOfKids={relative.amountOfKids}
+                                    relation={relative.relation}
                                 />
 
                             })}

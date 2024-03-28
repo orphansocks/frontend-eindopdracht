@@ -17,13 +17,12 @@ function SingleRelative() {
     const [loading, toggleLoading] = useState(false);
     const [showChangeRelative, setShowChangeRelative] = useState(false);
 
-
     const navigate = useNavigate();
 
     // de parameter voor het ophalen van de juiste relative
     const { id} = useParams();
 
-    // de functie voor het ophalen van de data
+    // de async functie voor het ophalen van de data
     async function fetchRelativeById() {
         toggleError(false);
 
@@ -41,6 +40,12 @@ function SingleRelative() {
     // de functie om de relative te verwijderen
     async function deleteRelativeById(id) {
         toggleError(false);
+
+        const confirmDelete = window.confirm('Are you sure you want to delete this group?');
+
+        if (!confirmDelete) {
+            return;
+        }
 
         try {
             await axios.delete(`http://localhost:8080/relatives/${id}`);
@@ -138,7 +143,6 @@ function SingleRelative() {
                             )}
                         </h3>
 
-
                             <Portrait
                                 key={relative.id}
                                 id={relative.id}
@@ -166,11 +170,13 @@ function SingleRelative() {
                             onClick={changeRelative}>
                         Change relative
                     </Button>
+
                     <Button type="button"
                             variant="primary"
                             onClick={() => deleteRelativeById(id)}>
                             Delete relative
                     </Button>
+
                         <Button
                             type="button"
                             variant="primary"
@@ -187,7 +193,10 @@ function SingleRelative() {
                 <div className="inner-content-container">
                     <h2>change relative</h2>
 
-                    <ChangeRelativeForm relative={relative} updateRelativeData={ updateRelativeData } />
+                    <ChangeRelativeForm
+                        relative={ relative }
+                        updateRelativeData={ updateRelativeData }
+                    />
 
 
                 </div>
