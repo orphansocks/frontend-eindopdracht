@@ -1,4 +1,5 @@
 import './Footer.css';
+import React from "react";
 
 /* &COPY IS HET COPYRIGHTS SYMBOOL */
 
@@ -13,7 +14,7 @@ function Footer() {
             </div>
 
             <div className="footer-copyright">
-                <p>relatives &copy; Eva van Dongen - 2024 - eindopdracht Full Stack Development Bootcamp @ <a href="https://www.novi.nl/full-stack-developer/" target="_blank">NOVI Hogeschool</a></p>
+                <p>relatives &copy; <a href="mailto:youremail@example.com?subject=Hi!">Eva van Dongen</a> - 2024 - eindopdracht Full Stack Development Bootcamp @ <a href="https://www.novi.nl/full-stack-developer/" target="_blank">NOVI Hogeschool</a></p>
 
 
             </div>

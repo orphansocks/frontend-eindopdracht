@@ -13,6 +13,9 @@ function ChangeGroupForm({ group, updateGroupData, groupRelatives }) {
 
 
     // state voor de functionaliteit
+    // relatives voor alle relatives
+    // selcted voor de selectie voor in de group
+    // ook nog initial voor te wijzigen?
     const [loading, toggleLoading] = useState(false);
     const [selectedRelatives, setSelectedRelatives] = useState([]);
     const [relatives, setRelatives] = useState([]);
@@ -30,7 +33,7 @@ function ChangeGroupForm({ group, updateGroupData, groupRelatives }) {
             try {
                 const response = await axios.get('http://localhost:8080/relatives');
                 console.log('all relatives data:', response.data);
-                setRelatives(response.data); // Set relatives state
+                setRelatives(response.data);
                 setSelectedRelatives(group.relatives.map(rel => rel.id));
             } catch (error) {
                 console.error(error);
@@ -45,18 +48,17 @@ function ChangeGroupForm({ group, updateGroupData, groupRelatives }) {
     }, []);
 
 
-
-    // Set initial form values from relative
+    // Set initial form values from grouprelatives
     useEffect(() => {
 
         console.log('relatives group:', groupRelatives);
 
         setValue('groupName', group.groupName || '');
         setValue('groupPlace', group.groupPlace || '');
-        // setValue('selectedRelatives', group.relativeIds || '');
 
     }, [group, setValue]);
 
+    // wat gebeurd er als de checkbox wijzigt
     const handleCheckboxChange = (e) => {
         const id = parseInt(e.target.value);
         if (e.target.checked) {
@@ -73,7 +75,7 @@ function ChangeGroupForm({ group, updateGroupData, groupRelatives }) {
         }
     }, []);
 
-// de asynchrone functie voor de data
+// de asynchrone functie om de data te wijzigen
 
     const onSubmit = async (data) => {
 
@@ -87,7 +89,7 @@ function ChangeGroupForm({ group, updateGroupData, groupRelatives }) {
         try {
             await axios.put(
                 `http://localhost:8080/groups/${group.id}`, data);
-            updateGroupData(); // Call the callback function to update the group data in
+            updateGroupData();
             console.log(data);
         } catch (error) {
             console.error(error);
@@ -130,7 +132,6 @@ function ChangeGroupForm({ group, updateGroupData, groupRelatives }) {
                             type="checkbox"
                             id={`relative-${relative.id}`}
                             {...register('selectedRelatives')}
-                            // name="selectedRelatives"
                             value={relative.id}
                             onChange={handleCheckboxChange}
                             checked={selectedRelatives.includes(relative.id)}

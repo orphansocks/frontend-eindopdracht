@@ -41,7 +41,7 @@ function SingleRelative() {
     async function deleteRelativeById(id) {
         toggleError(false);
 
-        const confirmDelete = window.confirm('Are you sure you want to delete this group?');
+        const confirmDelete = window.confirm('Are you sure you want to delete this relative?');
 
         if (!confirmDelete) {
             return;
