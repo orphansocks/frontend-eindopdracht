@@ -8,6 +8,7 @@ import AccountItem from "../../components/designer/AccountItem.jsx";
 
 import './Designer.css';
 import UploadCardForm from "../../components/forms/uploadCardForm.jsx";
+import DesignerCardItem from "../../components/designer/DesignerCardItem.jsx";
 
 function Designer() {
 
@@ -16,33 +17,47 @@ function Designer() {
     const [error, toggleError] = useState(false);
     const { user } = useContext(AuthContext);
 
-    // de parameter voor het ophalen van de juiste relative
+    // Use user ID from AuthContext
+    // const userId = user?.id; // Safely access user id
+
+    // de parameter voor het ophalen van de juiste designer
     const {id} = useParams();
 
-    //useeffect voor het juist ingelogd zijn
-    // useEffect(() => {
-    //     const source = axios.CancelToken.source();
+    // async function voor het ophalen van de designerdata
+    async function fetchDesignerById() {
+        toggleError(false);
 
-        // async function voor het ophalen van de designerdata
-        async function fetchDesignerById() {
-            toggleError(false);
+        try {
+            const response = await axios.get(`http://localhost:8080/designers/${id}`);
 
-            try {
-                const response = await axios.get(`http://localhost:8080/designers/${id}`);
+            console.log(response.data);
+            setDesigner(response.data);
 
-                console.log(response.data);
-                setDesigner(response.data);
-
-            } catch (e) {
-                console.error(e);
-                toggleError(true);
-            }
+        } catch (e) {
+            console.error(e);
+            toggleError(true);
         }
+    }
 
-    // useEffect om de designerdata te laden on pageload
+    // useEffect to load designer data on component mount
+    // useEffect(() => {
+    //     fetchDesignerById(userId);
+    // }, [userId]); // Execute useEffect whenever userId changes
+
     useEffect(() => {
-        fetchDesignerById();
+        // Check if userId is defined
+            fetchDesignerById();
+
     }, []);
+
+
+
+
+    // Calculate total amount of downloads
+    const totalDownloads = designer.cardDto
+        ? designer.cardDto.reduce((total, card) => total + card.amountOfDownloads, 0)
+        : 0;
+
 
 
     return (
@@ -50,8 +65,9 @@ function Designer() {
             <h1 className="page-title">Account</h1>
 
                 <section className="outer-content-container">
+                    <div className="inner-content-container account-container">
 
-                    <div className="account-container">
+                    <div className="account-field">
 
                         {Object.keys(designer).length > 0 && (
                             <>
@@ -74,10 +90,10 @@ function Designer() {
 
                     </div>
 
-                    <div className="account-container">
+                    <div className="account-field">
                         <h3>Your downloads</h3>
-
-
+                        <h1 className="total-downloads">{totalDownloads}</h1>
+                    </div>
 
                     </div>
 
@@ -88,6 +104,20 @@ function Designer() {
                 <div className="inner-content-container">
                     <h2>Your cards</h2>
 
+                    {designer.cardDto && designer.cardDto.length > 0 && (
+                        <ul className="card-items-list">
+                            {designer.cardDto.map((card) => (
+                                <DesignerCardItem
+                                    key={card.id}
+                                    id={card.id}
+                                    cardName={card.cardName}
+                                    category={card.category}
+                                    amountOfDownloads={card.amountOfDownloads}
+                                />
+                            ))}
+                        </ul>
+                    )}
+
                 </div>
             </section>
 
@@ -95,7 +125,8 @@ function Designer() {
             <section className="outer-content-container">
                 <div className="inner-content-container">
                     <h2>Upload a new card</h2>
-                    <UploadCardForm />
+                    <UploadCardForm
+                    />
                 </div>
             </section>
 

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import './Portrait.css';
 import {Link} from "react-router-dom";
+import birthdayChecker from "../../helpers/birthdayChecker.js";
 
-function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) {
-
-
+function Portrait({id, color, firstName, socialStatus, amountOfKids, relation, dob}) {
+    const isBirthday = birthdayChecker(dob);
 
     // useeffect voor wat er gebeurd
 
@@ -35,7 +35,7 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) 
                 fillColor = "#85A090";
                 break;
             case "fellow students":
-                fillColor = "#AFBFC5";
+                fillColor = "#B8C2C8";
                 break;
             case "neighbours":
                 fillColor = "#C6C1B0";
@@ -120,7 +120,7 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) 
         }
 
         // ellipse for amountofkids
-        if (amountOfKids === 2 || amountOfKids === 3  ) {
+        if (amountOfKids === 2 || amountOfKids === 3 || amountOfKids === 4  ) {
             ctx.save(); // Save the current transformation state
             ctx.beginPath();
             ctx.ellipse(centerX , centerY -10, radiusY, radiusX -20, 0, startAngle, endAngle);
@@ -141,7 +141,7 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) 
         }
 
         // ellipse for amountofkids
-        if ( amountOfKids === 3  ) {
+        if ( amountOfKids >= 3  ) {
             ctx.save(); // Save the current transformation state
             ctx.beginPath();
             ctx.ellipse(centerX, centerY, radiusY, radiusX -20, 0, startAngle, endAngle);
@@ -154,26 +154,15 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) 
             ctx.restore(); // Restore the transformation state
         }
 
-        // ellipse for amountofkids
-        // if (amountOfKids >= 3) {
-        //     ctx.save(); // Save the current transformation state
-        //     ctx.beginPath();
-        //     ctx.ellipse(centerX, centerY, radiusY, radiusX, -Math.PI / 3, startAngle, endAngle);
-        //     ctx.strokeStyle = color;
-        //     ctx.lineWidth = 1;
-        //     ctx.stroke();
-        //     ctx.closePath();
-        //     ctx.restore(); // Restore the transformation state
-        // }
-
-        // ellipse for amountofkids
-        if (amountOfKids >= 4) {
+        if ( amountOfKids >= 4  ) {
             ctx.save(); // Save the current transformation state
             ctx.beginPath();
-            ctx.ellipse(centerX, centerY, radiusY, radiusX, 0, startAngle, endAngle);
+            ctx.ellipse(centerX, centerY +20, radiusY, radiusX -20, 0, startAngle, endAngle);
             ctx.strokeStyle = color;
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 0;
             ctx.stroke();
+            // ctx.fillStyle = "#C6B0B0";
+            // ctx.fill();
             ctx.closePath();
             ctx.restore(); // Restore the transformation state
         }
@@ -188,17 +177,17 @@ function Portrait({id, color, firstName, socialStatus, amountOfKids, relation}) 
 
     return (
         <div className="portrait-container">
+            <div className="data-container">
             <canvas
                 id={id}
                 width="150"
                 height="150">
-
             </canvas>
+                </div>
 
-            {/*DEZE LINK ZIE JE ALLEEN OP DE OVERVIEW PAGINA*/}
             <span className="portrait-name">
-            <h4>
-                <Link to={`/relatives/${id}`}>{firstName}</Link>
+            <h4 className="name-input">
+                <Link to={`/relatives/${id}`}>{isBirthday ? `${firstName}*` : firstName  }</Link>
             </h4>
             <h5>
                 <Link className="portrait-relation" to={`/categories/${relation}`}>{relation}</Link>

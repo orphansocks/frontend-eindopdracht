@@ -7,7 +7,6 @@
     flex-wrap:wrap;
 
     background-color: var(--color-tertiary);
-    color: var(--color-secondary);
     text-align: center;
     margin: 30px;
     padding: 16px 64px;
@@ -18,6 +17,10 @@
 
 }
 
-.copyright {
+.footer-copyright {
+    font-size: 0.8em;
+}
+
+.footer-quote {
     font-size: 0.8em;
 }

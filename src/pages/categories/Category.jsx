@@ -4,6 +4,7 @@ import {Link, useParams} from "react-router-dom";
 import Portrait from "../../components/portrait/Portrait.jsx";
 import ErrorMessage from "../../components/errors/ErrorMessage.jsx";
 import './Category.css';
+import LinkBar from "../../components/linkbar/LinkBar.jsx";
 
 function Category() {
 
@@ -38,6 +39,10 @@ return (
 
     <>
         <h1 className="page-title">{relation}</h1>
+        <LinkBar
+            linkTo="/allgroups"
+            linkText="back to all groups"
+        />
 
         <section className="outer-content-container">
             <div className="inner-content-container">

@@ -4,11 +4,11 @@ import './Forms.css';
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
-function AddNewRelativeForm() {
+function ChangeRelativeForm({ relative, updateRelativeData }) {
     const {
         register,
         handleSubmit,
-        formState: { errors } } = useForm();
+        formState: { errors }, setValue } = useForm();
 
 
     // state voor de functionaliteit
@@ -20,6 +20,24 @@ function AddNewRelativeForm() {
     // canceltoken voor het netwerkrequest
     const source = axios.CancelToken.source();
 
+    // set initial form values from relative
+    useEffect( () => {
+
+        setValue('firstName', relative.firstName || '');
+        setValue('lastName', relative.lastName || '');
+        setValue('nickName', relative.nickName || '');
+        setValue('dob', relative.dob || '');
+        setValue('socialStatus', relative.socialStatus || '');
+        setValue('nameOfPartner', relative.nameOfPartner || '');
+        setValue('hasKids', relative.hasKids || '');
+        setValue('amountOfKids', relative.amountOfKids || '');
+        setValue('namesOfKids', relative.namesOfKids || '');
+        setValue('misc', relative.misc || '');
+        setValue('relation', relative.relation || '');
+
+
+    }, [relative, setValue]);
+
     // useeffect voor het afbreken
     useEffect(() => {
         return function cleanup() {
@@ -28,33 +46,18 @@ function AddNewRelativeForm() {
     }, []);
 
 // de asynchrone functie voor de data
-    async function onSubmit(data) {
-        console.log(data);
+
+    const onSubmit = async (data) => {
         toggleLoading(true);
-
         try {
-            await axios.post('http://localhost:8080/relatives', {
-
-                firstName: data.firstName,
-                lastName: data.lastName,
-                nickName: data.nickName,
-                dob: data.dob,
-                socialStatus: data.socialStatus,
-                nameOfPartner: data.nameOfPartner,
-                hasKids: data.hasKids,
-                amountOfKids: data.amountOfKids,
-                namesOfKids: data.amountOfKids,
-                misc: data.misc,
-                relation: data.relation
-
-            }, );
-            navigate("/allrelatives");
-
-        } catch (e) {
-            console.error(e);
+            await axios.put(`http://localhost:8080/relatives/${relative.id}`, data);
+            updateRelativeData(); // Call the callback function to update the relative data in SingleRelative component
+            // navigate(`/relatives/${relative.id}`);
+        } catch (error) {
+            console.error(error);
         }
         toggleLoading(false);
-    }
+    };
 
     const validateDOB = (value) => {
         const selectedDate = new Date(value);
@@ -140,7 +143,7 @@ function AddNewRelativeForm() {
             <button
                 type="submit"
                 className="form-button"
-            disabled={loading}>
+                disabled={loading}>
 
                 Submit</button>
         </form>
@@ -148,4 +151,4 @@ function AddNewRelativeForm() {
 }
 
 
-export default AddNewRelativeForm;
+export default ChangeRelativeForm;

@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react";
 import ErrorMessage from "../../components/errors/ErrorMessage.jsx";
 import axios from "axios";
 import './Relatives.css';
+import LinkBar from "../../components/linkbar/LinkBar.jsx";
 
 function AllRelatives() {
 
@@ -17,9 +18,13 @@ function AllRelatives() {
 
         try {
             const response = await axios.get('http://localhost:8080/relatives');
-
-            console.log(response.data);
-            setRelatives(response.data);
+            const sortedRelatives = response.data.sort((a, b) => {
+                if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) return -1;
+                if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) return 1;
+                return 0;
+            });
+            console.log(sortedRelatives);
+            setRelatives(sortedRelatives);
 
         } catch (e) {
 
@@ -38,20 +43,14 @@ function AllRelatives() {
         <>
 
             <h1 className="page-title">All relatives</h1>
+            <LinkBar
+                linkTo="/allgroups"
+                linkText="go to your groups"
+            />
 
             <section  className="outer-content-container">
 
                 <div className="inner-content-container">
-
-                    <p> If your relatives are not showing, please <Link to="/login">login</Link> or <Link to="/register">register</Link> first</p>
-                    <p> <Link to="/allgroups">Go to your groups</Link></p>
-
-
-                    {/*<Button type="button"*/}
-                    {/*        onClick={ fetchRelatives }*/}
-                    {/*        variant="primary">Get all relatives</Button>*/}
-
-
 
                     {relatives.length > 0 && (
 
@@ -65,6 +64,7 @@ function AllRelatives() {
                                     socialStatus={relative.socialStatus}
                                     amountOfKids={relative.amountOfKids}
                                     relation={relative.relation}
+                                    dob={relative.dob}
                                     />
 
                                     })}

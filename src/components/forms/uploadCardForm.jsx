@@ -10,7 +10,7 @@ function uploadCardForm() {
         handleSubmit,
         formState: { errors } } = useForm();
 
-    const initialDesignerId = "4040";
+    const initialDesignerId = "4001";
 
     // state voor de functionaliteit
     const [loading, toggleLoading] = useState(false);
@@ -18,13 +18,11 @@ function uploadCardForm() {
     // navigate voor het navigeren na invullen
     const navigate = useNavigate();
 
-    // canceltoken voor het netwerkrequest
-    const source = axios.CancelToken.source();
 
     // useeffect voor het afbreken
     useEffect(() => {
-        return function cleanup() {
-            source.cancel();
+        return () => {
+            //cleanup
         }
     }, []);
 
@@ -34,16 +32,21 @@ function uploadCardForm() {
         toggleLoading(true);
 
         try {
-            await axios.post('http://localhost:8080/cards', {
+            const formData = new FormData();
+            formData.append('cardName', data.cardName);
+            formData.append('designerId', data.designerId);
+            formData.append('category', data.category);
+            formData.append('file', data.file[0]); // single file upload
 
-                cardName: data.cardName,
-                designerId: data.designerId,
-               category: data.category,
-                imageId: data.imageId,
+            await axios.post('http://localhost:8080/cards', formData, {
 
-            }, {
-                cancelToken: source.token,
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             });
+
+            // Redirect or do something upon successful upload
+            navigate('/designers/4001');
         } catch (e) {
             console.error(e);
         }
@@ -55,16 +58,16 @@ function uploadCardForm() {
 
         <form onSubmit={handleSubmit(onSubmit)}>
 
-            <label>Card name</label>
+            <label>Card name*</label>
             <input type="text" {...register("cardName", { required: true })} />
             {errors.cardName && <span>This field is required</span>}
 
-            {/*AUTOMATISCH INVULLEN?!*/}
+
             <label>Your Id</label>
             <input type="text" defaultValue={initialDesignerId} readOnly {...register("designerId", { required: true })} />
             {errors.designerId && <span>This field is required</span>}
 
-            <label>Category</label>
+            <label>Category*</label>
             <select
                 {...register("category", { required: true })} >
                 <option value="">Select ...</option>
@@ -73,14 +76,15 @@ function uploadCardForm() {
                 <option value="Birth">Birth</option>
                 <option value="Other">Other</option>
             </select>
-            {errors.status && <span>Choose an option</span>}
+            {errors.category && <span>This field is required, choose an option</span>}
 
             <label>Upload image</label>
             <input
                 type="file"
                 accept="image/*"
-                {...register('imageData', { required: true })}
+                {...register('file', { required: true })}
             />
+            {errors.file && <span>This field is required, choose a file</span>}
 
             <button
                 type="submit"

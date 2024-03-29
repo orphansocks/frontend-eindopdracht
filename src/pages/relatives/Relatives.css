@@ -17,3 +17,8 @@
 
 }
 
+.name-input {
+    text-transform: capitalize;
+}
+
+

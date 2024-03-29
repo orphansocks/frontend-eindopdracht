@@ -16,7 +16,6 @@ function AuthContextProvider( { children } ) {
 
     const navigate = useNavigate();
 
-
     // use effect voor het mounting effect
     // haal de token uit de local storage
     // is de token nog geldig (istokenvalid!)
@@ -48,41 +47,57 @@ function AuthContextProvider( { children } ) {
         const decodedToken = jwtDecode(token);
         console.log(decodedToken.sub);
 
-        void fetchUserData( token );
+        // geef de id en de token door aan de fetchUserData functie
+        void fetchUserData( decodedToken.sub, token );
 
-        navigate('/');
     }
 
-    async function fetchUserData( token ) {
-
+    async function fetchUserData(id, token) {
         try {
             const response = await axios.get(`http://localhost:8080/authenticated`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 },
-
             });
+
             console.log(response);
 
-            // zet de gegevens in de state
 
-            setAuth({
-                isAuth: true,
-                user: {
-                    username: response.data.username,
-                    // email: response.data.email,
-                    id: response.data.id,
-                },
-                status: 'done',
-            });
+            if (response.data.authorities && response.data.authorities.length > 0) {
+                const userRole = response.data.authorities[0].authority;
+                setAuth({
+                    isAuth: true,
+                    user: {
+                        username: response.data.principal.username,
+                        id: response.data.id,
+                        role: userRole,
+                    },
+                    status: 'done',
+                });
+                console.log(userRole)
+
+                // Navigate based on the user's role
+                if (userRole === 'ROLE_USER') {
+                    navigate('/allrelatives');
+                } else if (userRole === 'ROLE_DESIGNER') {
+                    navigate('/designers/4001');
+                    // navigate(`/designers/${response.data.id}`);
+                } else if (userRole === 'ROLE_ADMIN') {
+                    navigate('/');
+                }
+            } else {
+                // Handle case where user doesn't have any roles
+                console.error('User has no roles');
+                logout();
+            }
 
         } catch (e) {
             console.error(e);
-
-          logout();
+            logout();
         }
     }
+
 
     function logout()  {
 
@@ -102,7 +117,7 @@ function AuthContextProvider( { children } ) {
 
     const contextData = {
 
-        isAuth: auth.isAuth,
+        auth: auth,
         login: login,
         logout: logout,
 

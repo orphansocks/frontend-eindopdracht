@@ -4,12 +4,12 @@ import roboto from '../../assets/card_roboto.png';
 import ivy from '../../assets/card_yvi.png';
 import haas from '../../assets/card_haas.png';
 
-import './CardItem.css';
-import {Link} from "react-router-dom";
+import '../card/CardItem.css';
+import './AccountItem.css';
 import React from "react";
 
 
-function CardItem({ id, cardName, designedBy, category }) {
+function CardItem({ id, cardName, category, amountOfDownloads }) {
 
     let image = ivy; // Default image
 
@@ -34,18 +34,20 @@ function CardItem({ id, cardName, designedBy, category }) {
     }
 
 
-            return (
+    return (
 
-                <article className="card-item-container">
+        <article className="card-item-container">
 
+            <img src={image} alt={`${cardName}`} className="card-image"/>
+            <div className="account-details">
+            <h5>cardName: <span className="account-info">{cardName}</span> </h5>
+            <h5>Category: <span className="account-info">{category}</span></h5>
+            <h5>Amount of downloads: <span className="account-info"> {amountOfDownloads}</span></h5>
+            </div>
 
-                    <Link to={`/cards/${id}`}>
-                        <img id="imageToShare" src={image} alt={`${cardName}`} className="card-image"/>
-                    </Link>
+        </article>
 
-                </article>
-
-            )
+    )
 
 
 

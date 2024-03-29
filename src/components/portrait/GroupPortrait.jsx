@@ -4,9 +4,6 @@ import './Portrait.css';
 
 function GroupPortrait({id, groupName, groupPlace, groupRelatives, relation }) {
 
-    // const relatives = [groupRelatives]
-
-
     // useeffect voor het effect
 
     useEffect(() => {
@@ -30,8 +27,10 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives, relation }) {
             ctx.save();// Save the current transformation state
             ctx.beginPath();
             ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-            ctx.lineWidth = 1;
-            ctx.stroke();
+            // ctx.lineWidth = 1;
+            // ctx.stroke();
+            ctx.fillStyle = "#FCFCF5";
+            ctx.fill();
             ctx.closePath();
             ctx.restore(); // Restore the transformation state
     }
@@ -57,7 +56,7 @@ function GroupPortrait({id, groupName, groupPlace, groupRelatives, relation }) {
                     fillColor = "#85A090";
                     break;
                 case "study":
-                    fillColor = "#AFBFC5";
+                    fillColor = "#B8C2C8";
                     break;
                 case "neighbour":
                     fillColor = "#C6C1B0";
